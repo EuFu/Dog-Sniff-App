@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "../App.css";
 import axios from "axios";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
@@ -10,15 +10,15 @@ import Popup from "./Popup.js"
 
 function App() {
   const [newGame, setNewGame] = useState()
+  const [round, setRound] = useState(0);
   const [allDogs, setAllDogs] = useState([]);
   const [correctDog, setCorrectDog] = useState([]);
   const [dogsInRound, setDogsInRound] = useState([]);
   const [previousDogs, setPreviousDogs] = useState([]);
-  const [answerColor, setAnswerColor] = useState("noGuess");
   const [fiftyFifty, setFiftyFifty] = useState([]);
   const [fFState, setfFState] = useState(false)
-  const [attributeClue, setAttributeClue] = useState(false)
-  const [attributeState, setAttributeState] = useState(false)
+  // const [attributeClue, setAttributeClue] = useState(false)
+  // const [attributeState, setAttributeState] = useState(false)
   const [sizeClue, setSizeClue] = useState(false)
   const [sizeState, setSizeState] = useState(false)
   const [letterClue, setLetterClue] = useState({
@@ -31,13 +31,11 @@ function App() {
     correct: false
   })
   const [popup, setPopup] = useState(false)
-  const [count, setCount] = useState(0)
-  const [btnClassStyle, setBtnClassStyle] = useState();
-  const [externalLink, setExternalLink] = useState({
-    exist: false,
-    source: ""
-  })
-  const [round, setRound] = useState(0);
+  const [help, setHelp] = useState(false)
+  // const [externalLink, setExternalLink] = useState({
+  //   exist: false,
+  //   source: ""
+  // })
 
   useEffect(() => {
     async function getDog() {
@@ -49,6 +47,7 @@ function App() {
     getDog();
   }, []);
 
+  // Generate New Round 
   const generateRound = () => {
     const dogs = pickDogs();
     setDogsInRound(dogs);
@@ -64,6 +63,55 @@ function App() {
     getMoreInfo(correctDog.name)
     console.log(correctDog)
   };
+
+// Clear round and generate new round
+  function clearRound() {
+    setDogsInRound([]);
+    setCorrectDog([]);
+    setFiftyFifty([]);
+    // setAttributeClue(false)
+    setSizeClue(false)
+    setSelected({
+      selected: false,
+      correct: false
+    })
+    setPopup(false)
+    // setExternalLink({
+    //   exist: false,
+    //   source: ""
+    // })
+    setLetterClue(prevValue => {
+      return {
+        used: prevValue.used,
+        show: false,
+        letters: []
+      }
+    })
+    generateRound();
+  }
+
+// Reset Game
+  function resetGame() {
+    setCorrectDog([])
+    setDogsInRound([])
+    setPreviousDogs([])
+    setFiftyFifty([])
+    setfFState(false)
+    setSizeClue(false)
+    setSizeState(false)
+    setLetterClue(({
+      used: false,
+      show: false,
+      letters: []
+    }))
+    setSelected({
+      selected: false,
+      correct: false
+    })
+    setPopup(false)
+    setRound(0)
+
+  }
 
   // Pick 4 random dogs for round
   const pickDogs = () => {
@@ -91,20 +139,22 @@ function App() {
   // Generate level banner
   function userLevel(round) {
     switch(round) {
-      case 1: 
+      case 0:
         return "Newborn"
-        break;
-      case 2:
+      case 1: 
         return "Pupper"
         break;
-      case 3:
+      case 2:
         return "Doggo"
         break;
-      case 4:
+      case 3:
         return "Good Dog"
         break;
-      case 5:
+      case 4:
         return "Neighborhood Favorite"
+        break;
+      case 5:
+        return "Rescue Dog"
         break;
       case 6:
         return "Pack Leader"
@@ -112,6 +162,13 @@ function App() {
       default:
         return ""
     }
+  }
+
+  // Toggle help section
+  function toggleHelp() {
+    setHelp(prevValue => {
+      return !prevValue
+    })
   }
 
   //Set fiftyFifty value
@@ -165,42 +222,16 @@ function App() {
     return dogsLeft;
   }
 
-  function handleAttribute() {
-    setAttributeClue(true)
-    setAttributeState(true)
-  }
+  // function handleAttribute() {
+  //   setAttributeClue(true)
+  //   setAttributeState(true)
+  // }
 
   function handleSize() {
     setSizeClue(true)
     setSizeState(true)
   }
 
-
-  function clearRound() {
-    setDogsInRound([]);
-    setCorrectDog([]);
-    setFiftyFifty([]);
-    setAttributeClue(false)
-    setSizeClue(false)
-    setSelected({
-      selected: false,
-      correct: false
-    })
-    setBtnClassStyle("")
-    setPopup(false)
-    setExternalLink({
-      exist: false,
-      source: ""
-    })
-    setLetterClue(prevValue => {
-      return {
-        used: prevValue.used,
-        show: false,
-        letters: []
-      }
-    })
-    generateRound();
-  }
 
   function answerSelected() {
     setSelected(true)
@@ -232,10 +263,10 @@ function App() {
     try {
       const url = "https://dogtime.com/dog-breeds/" + dogName
       await axios.get(url)
-      await setExternalLink({
-        exist: true,
-        source: url
-      })
+      // await setExternalLink({
+      //   exist: true,
+      //   source: url
+      // })
     } catch(e) {
       console.log(e)
     }
@@ -243,33 +274,32 @@ function App() {
 
   return (
     <div className="App">
-    <img className="app-img" src="https://images.unsplash.com/photo-1616666397847-381c080dd4d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2513&q=80" alt="background"/>
+    <img className="app-img" src="" alt="background"/>
     <div className="app-content">
     <Header />
       <GameArea
         dogsInRound={dogsInRound}
         correctDog={correctDog}
         checkAnswer={checkAnswer}
-        answerColor={answerColor}
         fiftyFifty={fiftyFifty}
-        attributeClue={attributeClue}
+        // attributeClue={attributeClue}
         sizeClue={sizeClue}
         selected={selected}
-        btnClassStyle={btnClassStyle}
         generateRound={generateRound}
         round={round}
         togglePopup={togglePopup}
         letterClue={letterClue}
-        count={count}
         fFState={fFState}
         handleFifty={handleFifty}
-        attributeState={attributeState}
-        handleAttribute={handleAttribute}
+        // attributeState={attributeState}
+        // handleAttribute={handleAttribute}
         sizeState={sizeState}
         handleSize={handleSize}
         selectLetters={selectLetters}
         newGame={newGame}
         setNewGame={setNewGame}
+        help={help}
+        toggleHelp={toggleHelp}
       />
       {popup ? <Popup 
         correctDog={correctDog}
@@ -278,6 +308,7 @@ function App() {
         togglePopup={togglePopup}
         round={round}
         userLevel={userLevel}
+        resetGame={resetGame}
       /> : null}
       {newGame ? <NewGame  
         newGame={newGame}

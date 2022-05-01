@@ -19,7 +19,7 @@ function DogName(props) {
         setCount(count => count + 1);
         counter++; // local variable that this closure will see
       }
-    }, 1500);
+    }, 1250);
     return () => clearInterval(interval); 
   }, [props.dogsInRound, count, props.correctDog]);
 
@@ -48,14 +48,13 @@ function DogName(props) {
         attributeClue={props.attributeClue}
         sizeClue={props.sizeClue}
         selected={props.selected}
-        btnClassStyle={props.btnClassStyle}
         togglePopup={props.togglePopup}
         letterClue={props.letterClue}
       />
     )
   })
     return (
-      <div className="dog-names columns">
+      <div className={`dog-names ${props.attributeClue || props.sizeClue ? "column is-three-fifths-tablet is-half-desktop" : "column is-half-tablet"}`}>
         {dogsInRound}
       </div>
     )
