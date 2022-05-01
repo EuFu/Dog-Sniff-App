@@ -2,10 +2,10 @@
   "name": "dogs-app",
   "version": "1.0.0",
   "description": "Dog guessing game",
-  "main": "./backend/server.js",
+  "main": ".frontend/src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node frontend/src/index.js",
     "server": "nodemon backend/server.js"
   },
   "author": "Eugene Ueno",
