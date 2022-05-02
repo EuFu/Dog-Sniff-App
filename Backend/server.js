@@ -1,10 +1,13 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import 'dotenv/config'
-import path from 'path'
+import path  from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import routes from './routes/dogAppRoutes.js'
 
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express()
 const port = process.env.PORT
@@ -20,9 +23,9 @@ app.use((req, res, next) => {
     );
     next();
   });
-app.use('/', routes)
+app.use('/game', routes)
 
-app.use(express.static('fronted/build'))
+app.use(express.static(path.join('__dirname', '../frontend/build')))
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
 })
