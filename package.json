@@ -2,7 +2,7 @@
   "name": "dogs-app",
   "version": "1.0.0",
   "description": "Dog guessing game",
-  "main": "Backend/server.js",
+  "main": "frontend/index.js",
   "type": "module",
   "scripts": {
     "start": "node Backend/server.js",
