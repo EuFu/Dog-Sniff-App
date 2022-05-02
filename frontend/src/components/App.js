@@ -39,9 +39,9 @@ function App() {
 
   useEffect(() => {
     async function getDog() {
-      await axios.get("http://localhost:3001/game").then((data) => {
+      await axios.get("/game").then((data) => {
         setAllDogs(data.data);
-        console.log(data.data);
+        // console.log(data.data);
       });
     }
     getDog();
