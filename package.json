@@ -5,8 +5,8 @@
   "main": ".frontend/src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node frontend/src/index.js",
-    "server": "nodemon backend/server.js"
+    "start": "node backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
   },
   "author": "Eugene Ueno",
   "license": "ISC",
