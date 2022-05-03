@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     );
     next();
   });
-app.use('/api', routes)
+app.use('/', routes)
 
 app.use(express.static(path.join('__dirname', '../frontend/build')))
 app.get('*', (req, res) => {
