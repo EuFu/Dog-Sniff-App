@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     async function getDog() {
-      await axios.get("/").then((data) => {
+      await axios.get("/api").then((data) => {
         setAllDogs(data.data);
         // console.log(data.data);
       });
