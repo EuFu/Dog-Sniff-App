@@ -9,7 +9,6 @@ function Popup(props) {
     setInfo(false);
   }, [props.correctDog]);
 
-  const correct = props.selected.correct;
   function handleClick() {
     props.nextRound();
   }

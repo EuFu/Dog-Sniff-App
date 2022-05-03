@@ -1,8 +1,5 @@
 function Round(props) {
   const correct = props.selected.correct;
-  function handleClick() {
-    props.nextRound();
-  }
 
   return (
     <div className="columns is-mobile">
@@ -28,7 +25,7 @@ function Round(props) {
                   className={`progress ${
                     props.selected.correct ? "is-link" : "is-failure"
                   }`}
-                  value={props.round * 10}
+                  value={props.selected.correct ? props.round * 10 : (props.round -1) * 10}
                   max="60"
                 ></progress>
               </div>
