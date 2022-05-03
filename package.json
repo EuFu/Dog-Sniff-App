@@ -2,10 +2,10 @@
   "name": "dogs-app",
   "version": "1.0.0",
   "description": "Dog guessing game",
-  "main": "backend/server.js",
+  "main": "Backend/server.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/server.js",
+    "start": "node Backend/server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "author": "Eugene Ueno",
