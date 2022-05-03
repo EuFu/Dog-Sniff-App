@@ -6,7 +6,7 @@ import 'dotenv/config'
 
 const key = process.env.API_KEY
 
-router.route('/game')
+router.route('/')
 .get((req, res) => {
     axios.get('https://api.thedogapi.com/v1/breeds', {'x-api-key': key}).then((data) => {
         res.json(data.data)

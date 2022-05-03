@@ -5,6 +5,7 @@ import path  from 'path'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import routes from './routes/dogAppRoutes.js'
+// import res from 'express/lib/response';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -23,19 +24,22 @@ app.use((req, res, next) => {
     );
     next();
   });
-app.use('/api', routes)
-
-app.use(express.static(path.join('__dirname', '../frontend/build')))
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../', 'frontend', 'build', 'index.html'))
-})
-
+app.use('/game', routes)
 
 mongoose.connect(uri).catch(err => `mongoose connection error: ${err}`)
 
 mongoose.connection.on('error', err => {
     console.log(`mongoose connection on error: ${err}`)
 }) 
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join('__dirname', '../frontend/build')))
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../', 'frontend', 'build', 'index.html'))
+  })
+} else { 
+  app.get('*', (req, res) => res.send("Please change to production"))
+}
 
 app.listen(port, () => {
     console.log(`Server listening on port: ${port}`)

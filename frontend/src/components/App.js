@@ -11,7 +11,7 @@ import Popup from "./Popup.js"
 function App() {
   const [newGame, setNewGame] = useState()
   const [round, setRound] = useState(0);
-  const [allDogs, setAllDogs] = useState([]);
+  const [allDogs, setAllDogs] = useState([1,2]);
   const [correctDog, setCorrectDog] = useState([]);
   const [dogsInRound, setDogsInRound] = useState([]);
   const [previousDogs, setPreviousDogs] = useState([]);
@@ -39,12 +39,13 @@ function App() {
 
   useEffect(() => {
     async function getDog() {
-      await axios.get("/").then((data) => {
+      await axios.get("/game").then((data) => {
         setAllDogs(data.data);
-        // console.log(data.data);
+        console.log(data.data)
       });
     }
     getDog();
+    
   }, []);
 
   // Generate New Round 
