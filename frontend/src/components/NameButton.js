@@ -8,8 +8,6 @@ function NameButton(props) {
     setClassStyle("");
   }, [props.correctDog]);
 
-  console.log(props.sizeClue)
-
   const names = props.fiftyFifty.map((dog) => dog.name);
 
   function handleClick(dog) {

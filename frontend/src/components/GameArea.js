@@ -38,22 +38,22 @@ function GameArea(props) {
     <section className="modal-card-body">
     <div className="block">
     <h4 className="">Objective</h4>
-      <p className="has-text-left">Each round, you will be presented with a photo of a different dog. Using your knowledge and senses, pick the correct name to advance. There are a total of 6 rounds</p>
+      <p className="has-text-left">Each round, you will be presented with a different dog. Using your knowledge and sharp senses, match the picture with the correct name. There are 6 rounds in total. Can you make it to the very end?</p>
     </div>
       <h4>Hints</h4>
       <div className="block has-text-left">
-      <p>You have 3 hints available at your disposal, use them if you get stuck! Be careful though, each hint can only be used once...</p>
+      <p>You have 3 hints available at your disposal, use them if you get stuck! Be careful though, each hint can be used only once...</p>
       <ul>
-        <li><b>50/50</b> - Eliminates half of the choices, giving you a 50/50 chance</li>
-        <li><b>Typical Size</b> - Shows the typical height(shoulders/withers) and weight for each dog</li>
-        <li><b>2 Letters</b> - Reveals two random letters that are in the correct dogs name</li>        
+        <li><b>50/50</b> - Eliminate half of the choices, giving you a 50/50 chance.</li>
+        <li><b>Typical Size</b> - Reveal the typical height(shoulders/withers) and weight for each dog.</li>
+        <li><b>2 Letters</b> - Receive two random letters that are in the correct dog's name.</li>        
       </ul>
       </div>
       <div className="block">
       <h4 className="">More</h4>
-      <p>If you want to know more about the correct dog, click "More info on this dog" at the end of each round</p>
+      <p>If you want to know more about the correct dog, click "More info on this dog" at the end of each round.</p>
       </div>
-      <h4 className="title is-5">Goodluck! And your nose lead you to victory</h4>
+      <h4 className="title is-5">Goodluck! And may your nose lead you to victory!</h4>
     </section>
   </div>
 </div>

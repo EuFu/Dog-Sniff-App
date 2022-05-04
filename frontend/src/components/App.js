@@ -41,7 +41,6 @@ function App() {
     async function getDog() {
       await axios.get("/game").then((data) => {
         setAllDogs(data.data);
-        console.log(data.data)
       });
     }
     getDog();
@@ -62,7 +61,6 @@ function App() {
     })
     setNewGame(false)
     getMoreInfo(correctDog.name)
-    console.log(correctDog)
   };
 
 // Clear round and generate new round
