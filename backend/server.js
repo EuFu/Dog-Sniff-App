@@ -24,7 +24,7 @@ app.use((req, res, next) => {
     );
     next();
   });
-app.use('/game', routes)
+app.use('/games', routes)
 
 mongoose.connect(uri).catch(err => `mongoose connection error: ${err}`)
 

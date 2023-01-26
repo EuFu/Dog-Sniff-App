@@ -1,26 +1,67 @@
-function Info(props) {
-  return (
-    <div>
-      <figure>
-        <img
-          src={props.correctDog.image.url}
-          alt={`${props.correctDog.name}`}
-        />
-        <figcaption>{props.correctDog.name}</figcaption>
-      </figure>
-      
-      {props.correctDog.temperament ? (<p>{props.correctDog.temperament}</p>) : null}
-      {props.correctDog.height ? (<p>Height: {props.correctDog.height.imperial} in. /{" "}
-              {props.correctDog.height.metric} cm.{" "}</p>) : null}
-      {props.correctDog.weight ? (<p>Weight: {props.correctDog.weight.imperial} lbs. /{" "}
-              {props.correctDog.weight.metric} kgs.{" "}</p>) : null}
-      {props.correctDog.life_span ? (<p>Lifespan: {props.correctDog.life_span}</p>) : null}
-      {props.correctDog.country_code ? (<p>Country: {props.correctDog.country_code}</p>) : null}
-      {props.correctDog.bred_for ? (<p>Bred for: {props.correctDog.bred_for}</p>) : null}
-      {props.correctDog.breeding_group ? (<p>Breeding group: {props.correctDog.breeding_group}</p>) : null}
+import { usePopUp } from "../context/PopupContext";
 
-    </div>
-  );
-}
+function Info(props) {
+
+  const {toggleInfo, toggleSelected} = usePopUp()
+
+  return (
+    <div className="">
+        <div className="modal-background"></div>
+          <div className="modal-content">
+          <div className="box">
+          <div className="card-image">
+              <figure>
+                <img
+                  src={props.dog.image.url}
+                  alt={`${props.dog.name}`}
+                  className="info-dog-img"
+                />
+                <figcaption>
+                  <b>{props.dog.name}</b>
+                </figcaption>
+              </figure>
+            </div>
+            <div className="dog-info block">
+              {props.dog.temperament ? (
+                <p>{props.dog.temperament}</p>
+              ) : null}
+              {props.dog.height ? (
+                <p>
+                  Height: {props.dog.height.imperial} in. /{" "}
+                  {props.dog.height.metric} cm.{" "}
+                </p>
+              ) : null}
+              {props.dog.weight ? (
+                <p>
+                  Weight: {props.dog.weight.imperial} lbs. /{" "}
+                  {props.dog.weight.metric} kgs.{" "}
+                </p>
+              ) : null}
+              {props.dog.life_span ? (
+                <p>Lifespan: {props.dog.life_span}</p>
+              ) : null}
+              {props.dog.country_code ? (
+                <p>Country: {props.dog.country_code}</p>
+              ) : null}
+              {props.dog.bred_for ? (
+                <p>Bred for: {props.dog.bred_for}</p>
+              ) : null}
+              {props.dog.breed_group ? (
+                <p>Breed group: {props.dog.breed_group}</p>
+              ) : null}
+              <div className="block mt-3">
+              <button
+                className="button is-small"
+                onClick={props.type === "popup" ? toggleInfo : toggleSelected}
+              >
+                <i class="fa-solid fa-arrow-left"></i> Back
+              </button>
+              </div>
+            </div>
+          </div>
+            
+          </div>
+        </div>
+      )}
 
 export default Info;

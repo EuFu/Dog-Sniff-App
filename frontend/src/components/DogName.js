@@ -1,19 +1,20 @@
 import { use } from 'express/lib/router';
 import { useState, useEffect } from 'react'
+import { useGameRound } from '../context/GameRoundContext.js';
 import NameButton from "./NameButton.js";
 
 function DogName(props) {
+  const {dogsInRound, correctDog} = useGameRound()
   const [ count, setCount ] = useState(0)
-  const [newArray, setNewArray] = useState([])
 
   useEffect(() => {
     setCount(0)
-  }, [props.dogsInRound])
+  }, [dogsInRound])
 
   useEffect(() => {
     let counter = count;
     const interval = setInterval(() => {
-      if (counter >= props.dogsInRound.length) {
+      if (counter >= dogsInRound.length) {
         clearInterval(interval);
       } else {
         setCount(count => count + 1);
@@ -21,7 +22,7 @@ function DogName(props) {
       }
     }, 1250);
     return () => clearInterval(interval); 
-  }, [props.dogsInRound, count, props.correctDog]);
+  }, [dogsInRound, count, correctDog]);
 
   
   // let newDogsArray = props.dogsInRound.slice(0, count).map((dog) => {
@@ -37,25 +38,50 @@ function DogName(props) {
   //   );
   // })
   
-  let dogsInRound = props.dogsInRound.slice(0, count).map(dog => {
+  // let dogsInRound = props.dogsInRound.slice(0, count).map((dog, index) => {
+  //   return (
+  //     <NameButton
+  //       key={index}
+  //       number={index}
+  //       dog={dog}
+  //       correctDog={props.correctDog}
+  //       checkAnswer={props.checkAnswer}
+  //       fiftyFifty={props.fiftyFifty}
+  //       attributeClue={props.attributeClue}
+  //       sizeClue={props.sizeClue}
+  //       selected={props.selected}
+  //       togglePopup={props.togglePopup}
+  //       letterClue={props.letterClue}
+  //       revealName={props.revealName}
+  //     />
+  //   )
+  // })
+  //   return (
+  //     <div className={`tile is-child box dog-names ${props.attributeClue || props.sizeClue ? "" : ""}`}>
+  //       {dogsInRound}
+  //     </div>
+  //   )
+
     return (
-      <NameButton
-        key={dog.id}
+      <div className="tile is-child box dog-names">
+        {dogsInRound.map((dog, index) => {
+          return (
+          <NameButton
+        key={index}
+        number={index}
         dog={dog}
-        correctDog={props.correctDog}
-        checkAnswer={props.checkAnswer}
-        fiftyFifty={props.fiftyFifty}
-        attributeClue={props.attributeClue}
-        sizeClue={props.sizeClue}
-        selected={props.selected}
-        togglePopup={props.togglePopup}
-        letterClue={props.letterClue}
+        // correctDog={props.correctDog}
+        // checkAnswer={props.checkAnswer}
+        // fiftyFifty={props.fiftyFifty}
+        // attributeClue={props.attributeClue}
+        // sizeClue={props.sizeClue}
+        // selected={props.selected}
+        // togglePopup={props.togglePopup}
+        // letterClue={props.letterClue}
+        // revealName={props.revealName}
       />
-    )
-  })
-    return (
-      <div className={`dog-names ${props.attributeClue || props.sizeClue ? "column is-three-fifths-tablet is-half-desktop" : "column is-half-tablet"}`}>
-        {dogsInRound}
+          )
+        })}
       </div>
     )
 

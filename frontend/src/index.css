@@ -1,8 +1,12 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 html {
-  background-color: #FAF5E4;
-  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.16'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  
+  background-color: #171717;
+/* background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #26997c 50%);
+background-size: 10px 4px;   */
+  /* background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.16'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+  text-align: center;
+  margin: none;
+  padding: none;
 }
 h1 {
   font-family: 'Bangers', cursive;
@@ -13,7 +17,8 @@ h4 {
 }
 
 body {
-  margin: 0;
+  margin: none;
+  padding: none;
   font-family: 'Francois One', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -25,6 +30,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .App {
+  height: 100vh;
+} */
 
 .app-img {
   position: absolute;
@@ -40,39 +49,82 @@ code {
         /* -- HEADER AREA -- */
 
 .header {
-  background-color:black;
+  background-color:white;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   margin: none;
 }
 
 .header h1 {
-  color: white;
+  color: black;
 }
 
 .header i {
   color: white;
 }
+
+        /* -- New Game Screen -- */
+
+.start-banner{
+  padding: 1rem;
+}
         /* -- MAIN GAME AREA -- */
 
+/* .main {
+  background-image: url("./images/dog_img.jpg");
+  background-position: center;
+  background-size: cover;
+  top:0;
+  left:0;
+  height: 100vh;
+} */
+
 .game-area {
-  padding-top: 1em;
   min-height: 70vh;
+  width: 80%;
+  margin: auto;
+  background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #26997c 50%);
+  background-size: 10px 4px;  
+  padding: 2rem 2rem 6rem 2rem;
+  
   /* background-color: white; */
   /* background-image: url("https://www.transparenttextures.com/patterns/gplay.png"); */
 }
 
+.hints-container {
+}
+
 .hints {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: #585856;
   box-shadow: 0 0.5em 1em 0 rgb(85, 85, 85)
 }
+
+#round {
+  background-color: black;
+  color: white;
+}
+
 .img-names-div {
   padding: 1em 0 4em 0;
-  background-color: #FAF5E4;
+  /* background-color: #fafafa; */
+/* background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #027948 50%);
+background-size: 10px 10px; */
+  /* background-color:#49238a ;
+  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.16'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
   /* background-image: url("https://images.unsplash.com/photo-1624359136353-f60129a367b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"); */
 }
 
 .dog-names {
-  /* color: white */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.is-child {
+  background-color: #f4f0d6;
+  box-shadow: 0 1em 1em 0 black;
 }
 
     /* Dog Image */
@@ -80,20 +132,57 @@ code {
 .img-el {
 }
 
-.dog-img {
-  /* object-fit:contain; */
-  max-width: 70%;
-  max-height: 60vh;
-  border-radius: 5px;
-  box-shadow: 0 2em 2em 0 rgb(85, 85, 85)
+.dog-img-banner {
+  width: 70%;
+  margin: auto;
 }
 
+.dog-banner-hide {
+  visibility: hidden;
+}
+
+/* .dog-banner-show {
+  font-size: 4em;
+} */
+
+.dog-img {
+  /* object-fit:contain; */
+  max-width: 50%;
+  max-height: 40vh;
+  border-radius: 5px;
+  /* box-shadow: 0 2em 2em 0 black */
+}
+
+.modal-card-head {
+  background-color: #16003B;
+}
+
+.modal-card-head h1 {
+  color: #FFE59D;
+}
+
+.modal-card-body {
+  background-color: #23025b;
+  color:rgb(250, 248, 229);
+}
+
+.modal-card-body  h4{
+  color:#FFE59D;
+}
+
+.popup-body {
+  background-color:  #abebc6 ;
+}
 
     /* Dog Buttons */
 
 .dog-name-btns {
-  white-space: normal;
-  box-shadow: 0 1em 2em 0 rgb(85, 85, 85)
+  background-color: #F9F9F9;
+  padding: 1rem;
+  border-radius: 50px;
+  text-align: left;
+  min-width: 80%;
+  box-shadow: 0 8px 18px 0 black
 }
 
 .dog-name-btns :disabled {
@@ -105,6 +194,8 @@ code {
 } */
 
 .name-div1{
+  text-align: center;
+  color:#F9F9F9;
 }
 
 /* .name-div2{
@@ -140,7 +231,8 @@ code {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background-image: url("./images/dog_img.jpg");
+  background-color: black;
+  /* background-image: url("./images/dog_img.jpg"); */
   background-position: center;
   background-size: cover;
   top:0;
@@ -157,28 +249,57 @@ code {
   height: 100vh;
   top:0;
   left:0;
-  margin: auto;
+  margin: 0 auto;
   background-color: black;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 .new-game-logo {
-  margin-bottom: -2em;
+  margin-bottom: -4em;
 }
 .new-game-title {
   margin-bottom: 0;
   font-size: 10em;
   color:#F9F9F9;
+  padding: 0;
+}
+
+.new-game-subtitle {
+  font-size: 1.5em;
+  text-shadow: 0 0 10px black;
+}
+
+/* #directions-background {
+  opacity: 0
+} */
+
+    /* Popup Area */
+
+#next {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 10rem;
+}
+
+#next-btn {
+  font-size: 3rem;
 }
 
 @media only screen and (max-width: 768px){
+
+  .new-game-logo {
+    margin-bottom: -3em;
+  }
   .new-game-title {
     font-size: 6em;
+  }
+  .new-game-subtitle {
+    font-size: 1em;
   }
 }
 
 .new-game-btn-div {
-  align-self: center;
+  background-color: white;
 }
 
 .new-game-btn-div h1 {
@@ -226,9 +347,23 @@ code {
   background-color: antiquewhite
 }
 
+.round-main {
+  display: grid;
+}
+
+.dog-bone {
+  color: grey;
+  padding: 2px;
+}
+
+.dog-bone-1 {
+  color: white;
+  padding: 2px;
+}
+
 .progress-div {
   width: 50%;
-  margin: auto
+  margin: auto;
 }
 
 .info-dog-img {
@@ -241,4 +376,5 @@ code {
   width: 100%;
   object-fit: contain;
 }
+
 /* -- FOOTER AREA -- */

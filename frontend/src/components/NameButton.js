@@ -1,33 +1,58 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useGameRound } from "../context/GameRoundContext";
 
 function NameButton(props) {
   const [classStyle, setClassStyle] = useState();
+  const [showName, setShowName] = useState("hidden");
+  const [flipName, setFlipName] = useState("")
   const [isDisabled, setIsDisabled] = useState(false);
+  const {correctDog, fiftyFifty, sizeClue, checkAnswer, togglePopup, setShowCorrectName} = useGameRound()
   
   useEffect(() => {
     setClassStyle("");
-  }, [props.correctDog]);
+    setShowName("hidden");
+    setFlipName("")
+  }, [correctDog]);
 
-  const names = props.fiftyFifty.map((dog) => dog.name);
+  useEffect(() => {
+    setTimeout(() => {
+      setShowName("")
+      setFlipName("animate__animated animate__flipInX is-slower")
+    }, (props.number + 1) * 1250)
+  }, [correctDog])
 
+  const names = fiftyFifty.map((dog) => dog.name);
+
+  function assignLetter(number) {
+    switch(number) {
+      case 0: return "A"
+      case 1: return "B"
+      case 2: return "C"
+      case 3: return "D"
+      default: return ""
+    }
+  }
   function handleClick(dog) {
-    dog.id === props.correctDog.id
+    dog.id === correctDog.id
       ? setClassStyle("is-success animate__shakeY")
       : setClassStyle("is-danger animate__shakeX");
   }
   return (
     <div className=" level p-2 column is-vcentered section">
-      <div className="name-div1 columns">
-        <div className={`name-div2 ${props.sizeClue ? "column is-one-third-desktop " : "column is-half-tablet"}`}>
+      <div className="name-div1">
+        <div className={`name-div2 ${sizeClue ? " " : ""}`}>
           <button
-            className={`dog-name-btns button is-responsive is-light animate__animated animate__flipInX is-slower names.includes(${props.dog.name}) ? ${classStyle} : null`}
+            type="submit"
+            className={`dog-name-btns button animate__animated animate__flipInX is-slower names.includes(${props.dog.name}) ? ${classStyle} : null`}
             disabled={names.includes(props.dog.name) ? true : false}
+            visibility="hidden"
             onClick={() => {
               handleClick(props.dog);
-              props.checkAnswer(props.dog.name);
-              setTimeout(() => props.togglePopup(), 750);
+              checkAnswer(props.dog.name);
+              setShowCorrectName(true);
+              setTimeout(() => togglePopup(), 1500);
             }}
-          >{props.dog.name}
+          ><span className={flipName} style={{"visibility": showName}}>{assignLetter(props.number)}. &nbsp; <strong>{props.dog.name}</strong></span>
           </button>{" "}
         </div>
         {/* {props.attributeClue ? (
@@ -40,8 +65,8 @@ function NameButton(props) {
             </p>
           </div>
         ) : null} */}
-        {props.sizeClue ? (
-          <div className={`${props.sizeClue ? "column is-flex-tablet is-justify-content-start is-two-thirds-desktop " : "column is-half-tablet"}`}>
+        {sizeClue ? (
+          <div className={`${sizeClue ? "" : ""}`}>
             <h6 className="m-1">
               Height: {props.dog.height.imperial} in. /{" "}
               {props.dog.height.metric} cm.{" "}
