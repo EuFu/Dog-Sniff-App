@@ -23,7 +23,7 @@ function App() {
     <PopupContextProvider>
     <SettingsContextProvider>
     <Router>
-      <div className="App">
+      <div className="App columns">
         {/* <img className="app-img" src="" alt="background" /> */}
        
 

@@ -15,9 +15,9 @@ router.route('/')
     })
     // res.send("Got Login Homepage")
 })
-.post((req, res) => {
-res.send("")
-})
+// .post((req, res) => {
+// res.send("")
+// })
 
 // router.route('/game')
 // .get((req, res) => {

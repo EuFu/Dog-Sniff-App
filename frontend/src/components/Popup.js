@@ -3,10 +3,11 @@ import Result from "./Result";
 import Info from "./Info";
 import {usePopUp} from "../context/PopupContext.js";
 import { useGameRound } from "../context/GameRoundContext";
+import DogPack from "./DogPack";
 
 function Popup(props) {
-  const {info, setInfo, dogSelected, dogCard, toggleSelected, toggleInfo} = usePopUp()
-  const {correctDog} = useGameRound()
+  const {info, setInfo, dogSelected, dogCard, dogPack, toggleSelected, toggleInfo} = usePopUp()
+  const {correctDog, setCorrectDog, previousDogs} = useGameRound()
 
   useEffect(() => {
     setInfo(false);
@@ -15,8 +16,8 @@ function Popup(props) {
   
 
   return (
-      <div className="modal is-active">
-        {!info && !dogSelected ? (
+      <div className= "modal is-active">
+        {!info && !dogPack ? (
           <Result
             // round={props.round}
             // correctDog={props.correctDog}
@@ -32,11 +33,11 @@ function Popup(props) {
             // setDogCard={setDogCard}
             // toggleSelected={toggleSelected}
           />
-        ) : dogSelected ? (
-          <Info dog={dogCard} type={"round"} />
+        ) : info ? (
+            <Info dog={!dogPack ? correctDog : dogCard} />
         ) : (
-          <Info dog={correctDog} type={"popup"} />
-        )}
+          <DogPack />
+         )}
       </div>
   );
 }

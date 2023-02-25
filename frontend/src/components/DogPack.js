@@ -1,53 +1,27 @@
 import { useGameRound } from "../context/GameRoundContext";
-import { usePopUp } from "../context/PopupContext"
+import { usePopUp } from "../context/PopupContext";
+import DogCard from "./DogCard";
 
 function DogPack() {
+  const { selected, previousDogs } = useGameRound();
+  const { setDogCard, toggleSelected, toggleDogPack } = usePopUp();
 
-    const {selected, previousDogs, } = useGameRound()
-    const {setDogCard, toggleSelected, toggleDogPack} = usePopUp()
-
-    return (
-        <div className="box">
-            {selected.correct ? (
-              <ul className="">
-                {previousDogs.map((dog) => (
-                  <li>
-                    <span class="image is-96x96">
-                      <img src={dog.image.url} alt="Dog"/>
-                    </span>
-                    <span
-                      onClick={() => {
-                        setDogCard(dog);
-                        toggleSelected();
-                      }}
-                      className="button is-ghost"
-                    >
-                      {dog.name}
-                    </span>
-                  </li>
+  return (
+    <div>
+      <div className="modal-background"></div>
+      <div className="modal-content tile is-ancestor">
+        <div className="box popup-shell tile is-parent is-vertical">
+          <div className="tile is-child">
+              <div className=" tile dog-card-shell is-parent is-flex is-flex-wrap-wrap">
+                {selected.correct ? previousDogs.map((dog) => (
+                  <DogCard dog={dog} />
+                )) : previousDogs.slice(0, previousDogs.length - 1).map((dog) => (
+                  <DogCard dog={dog} />
                 ))}
-              </ul>
-            ) : (
-              <ul>
-                {previousDogs
-                  .slice(0, previousDogs.length - 1)
-                  .map((dog) => (
-                    <li>
-                      <button
-                        onClick={() => {
-                          setDogCard(dog);
-                          toggleSelected();
-                        }}
-                        className="button is-ghost"
-                      >
-                        {dog.name}
-                      </button>
-                    </li>
-                  ))}
-              </ul>
-            )}
-
-            <button
+                </div>
+        </div>
+        <div>
+          <button
               className="button is-ghost"
               onClick={() => {
                 toggleDogPack();
@@ -55,8 +29,12 @@ function DogPack() {
             >
               Back
             </button>
+            </div>
           </div>
-    )
+          
+      </div>
+    </div>
+  );
 }
 
-export default DogPack
+export default DogPack;

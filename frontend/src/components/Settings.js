@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
-import Game from "./Game";
+import GameDirections from "./GameDirections";
 import { useSettings } from "../context/SettingsContext";
 
 
 
 function Settings(props) {
 
-    const {expanded, setExpanded, sound, setSound, toggleExpanded, toggleSound, toggleHelp} = useSettings()
+    const {expanded, help, setExpanded, sound, setSound, toggleExpanded, toggleSound, toggleHelp} = useSettings()
 
   // <i class="fa-solid fa-volume-high"></i>
   // <i class="fa-solid fa-volume-xmark"></i>
@@ -15,17 +15,24 @@ function Settings(props) {
 
   return (
     <div>
-      {expanded === true ? (
+      {expanded === true && help ? (
+        <div className={`modal ${help === true ? "is-active" : null}`}>
+            <GameDirections 
+              
+            />
+          </div>
+      ): expanded ? (
+        <div>
         <div id="show-settings" class="modal is-active">
           <div class="modal-background" onClick={toggleExpanded}></div>
           <div class="modal-content">
             <div>
               {sound ? (
-                <i class="fa-solid fa-volume-high" onClick={toggleSound}></i>
+                <i class="fa-solid fa-volume-high fa-2x icon" onClick={toggleSound}></i>
               ) : (
-                <i class="fa-solid fa-volume-xmark" onClick={toggleSound}></i>
+                <i class="fa-solid fa-volume-xmark fa-2x icon" onClick={toggleSound}></i>
               )}
-              <i class="fa-solid fa-circle-info" onClick={toggleHelp}></i>
+              <i class="fa-solid fa-circle-info fa-2x icon" onClick={toggleHelp}></i>
             </div>
           </div>
           <button
@@ -33,6 +40,7 @@ function Settings(props) {
             aria-label="close"
             onClick={toggleExpanded}
           ></button>
+        </div>
         </div>
       ) : (
         <div>

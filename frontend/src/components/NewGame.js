@@ -9,7 +9,7 @@ import {
 import { CSSTransition } from "react-transition-group";
 import GameDirections from "./GameDirections.js";
 import Settings from "./Settings.js";
-import SettingsContextProvider from "../context/SettingsContext"
+import SettingsContextProvider from "../context/SettingsContext";
 import Game from "./Game.js";
 
 function NewGame(props) {
@@ -25,12 +25,12 @@ function NewGame(props) {
   }
 
   return (
-    <div
-      className="new-game"
-    >
-      <div className={`new-game-content ${
-        fade ? "animate__animated animate__fadeOutLeft" : ""
-      }`}>
+    <div className="new-game">
+      <div
+        className={`new-game-content ${
+          fade ? "animate__animated animate__fadeOutLeft" : ""
+        }`}
+      >
         <div className=" section">
           <div className="new-game-logo level-item animate__animated animate__heartBeat  animate__slow animate__delay-1s py-small">
             <span className="">
@@ -47,10 +47,8 @@ function NewGame(props) {
         </div>
         <div className="new-game-btn-div level">
           <div className="level-item">
-          <SettingsContextProvider>
-            <Settings 
-              className="start-banner"
-            />
+            <SettingsContextProvider>
+              <Settings className="start-banner" />
             </SettingsContextProvider>
             <Link
               to={{
@@ -60,15 +58,7 @@ function NewGame(props) {
               onClick={delayRedirect}
               className="start-banner"
             >
-              <h1>
-                Start
-                {/* <i
-                class="fa-solid fa-angle-right"
-                onClick={(e) => {
-                  setInProp(true);
-                }}
-              ></i> */}
-              </h1>
+              <div class="fa-solid fa-paw"> Start</div>
             </Link>
           </div>
         </div>

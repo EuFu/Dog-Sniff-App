@@ -22,7 +22,7 @@ function GameArea(props) {
     setDogsInRound,
     previousDogs,
     setPreviousDogs,
-
+    imageLoaded,
     selected,
     setSelected,
     showCorrectName,
@@ -74,6 +74,10 @@ function GameArea(props) {
     toggleSound,
   } = useSettings();
 
+  useEffect(() => {
+
+  }, [imageLoaded])
+
   return (
     <section className="game-area">
       <h1 className="title is-2 box" id="round">
@@ -118,19 +122,12 @@ function GameArea(props) {
               // round={round}
               // toggleHelp={toggleHelp}
             />
-            <DogName
-              // dogsInRound={dogsInRound}
-              // correctDog={correctDog}
-              // checkAnswer={checkAnswer}
-              // fiftyFifty={fiftyFifty}
-              // sizeClue={sizeClue}
-              // selected={selected}
-              // togglePopup={togglePopup}
-              // letterClue={letterClue}
-              // revealName={revealName}
-            />
+            {imageLoaded ? 
+              <DogName />
+            : null}
+            
           </div>
-          {popup ? (
+          {/* {popup ? (
             <Popup
               // round={round}
               // correctDog={correctDog}
@@ -142,7 +139,7 @@ function GameArea(props) {
               // dogPack={dogPack}
               // toggleDogPack={toggleDogPack}
             />
-          ) : null}
+          ) : null} */}
         </div>
       ) : (
         <div>
@@ -154,6 +151,7 @@ function GameArea(props) {
         </div>
       )}
     </section>
+    
     /* <section className="game-area">
         <div className="">
           <Hints
@@ -255,6 +253,7 @@ function GameArea(props) {
       
     </section> */
   );
+            
 }
 
 export default GameArea;

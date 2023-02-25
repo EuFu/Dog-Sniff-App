@@ -10,6 +10,7 @@ function GameRoundContextProvider(props) {
   const [allDogs, setAllDogs] = useState([]);
   const [correctDog, setCorrectDog] = useState([]);
   const [dogsInRound, setDogsInRound] = useState([]);
+  const [imageLoaded, setImageLoaded] = useState(false)
   const [previousDogs, setPreviousDogs] = useState([]);
   const [fiftyFifty, setFiftyFifty] = useState([]);
   const [fFState, setfFState] = useState(false);
@@ -30,6 +31,7 @@ function GameRoundContextProvider(props) {
 
   // Generate New Round
   const generateRound = () => {
+    setImageLoaded(false)
     const dogs = pickDogs();
     setDogsInRound(dogs);
     const correctDog = pickCorrectDog(dogs);
@@ -242,6 +244,8 @@ function GameRoundContextProvider(props) {
     setDogsInRound,
     previousDogs,
     setPreviousDogs,
+    imageLoaded,
+    setImageLoaded,
     fiftyFifty,
     setFiftyFifty,
     fFState,

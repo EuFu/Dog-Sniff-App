@@ -1,11 +1,17 @@
 import { use } from 'express/lib/router';
+import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { useGameRound } from '../context/GameRoundContext.js';
 import NameButton from "./NameButton.js";
 
 function DogName(props) {
-  const {dogsInRound, correctDog} = useGameRound()
+  const {dogsInRound, correctDog, imageLoaded} = useGameRound()
   const [ count, setCount ] = useState(0)
+
+  const [fetched, setFetched] = useState(false)
+
+  useEffect(() => {
+  }, [imageLoaded])
 
   useEffect(() => {
     setCount(0)
@@ -63,7 +69,7 @@ function DogName(props) {
   //   )
 
     return (
-      <div className="tile is-child box dog-names">
+      <div className="section dog-names">
         {dogsInRound.map((dog, index) => {
           return (
           <NameButton

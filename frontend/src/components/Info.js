@@ -7,8 +7,8 @@ function Info(props) {
   return (
     <div className="">
         <div className="modal-background"></div>
-          <div className="modal-content">
-          <div className="box">
+          <div className="modal-content tile is-ancestor ">
+          <div className="box popup-shell tile is-child">
           <div className="card-image">
               <figure>
                 <img
@@ -52,7 +52,7 @@ function Info(props) {
               <div className="block mt-3">
               <button
                 className="button is-small"
-                onClick={props.type === "popup" ? toggleInfo : toggleSelected}
+                onClick={toggleInfo}
               >
                 <i class="fa-solid fa-arrow-left"></i> Back
               </button>

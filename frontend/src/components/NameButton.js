@@ -66,7 +66,7 @@ function NameButton(props) {
           </div>
         ) : null} */}
         {sizeClue ? (
-          <div className={`${sizeClue ? "" : ""}`}>
+          <div className={`${sizeClue ? "size-clue" : ""}`}>
             <h6 className="m-1">
               Height: {props.dog.height.imperial} in. /{" "}
               {props.dog.height.metric} cm.{" "}
