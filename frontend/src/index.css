@@ -1,71 +1,53 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
 
 :root {
-  --main-bg-color: #DAE2B6;
-  --sec-bg-color: #224B0C;
-  --popup-main-color: #FEFFDE;
-  --card-content-color: #206A5D;
-  --info-main-color: 
+  /* Fonts */
+  --main-font: "Francois One", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --sec-font: "Bangers", cursive;
+
+  /* Colors */
+  --main-bg-color: #dae2b6;
+  --sec-bg-color: #224b0c;
+  --popup-main-color: #17762d;
+  --popup-shell-correct-color: #224b0c;
+  --popup-shell-incorrect-color: #d2d2d2;
+  --card-content-color: #dae2b6;
+  --rd-banner-color: #17762d;
+  --hints-color: #f4e469;
+  --info-main-color: ;
 }
 
 html {
-  /* background-color: #171717; */
-  /* background-color: var(--main-bg-color); */
-  background-color: #64A36F;
-background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
-/* background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #26997c 50%);
-background-size: 10px 4px;   */
-  /* background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.16'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+  background-color: var(--main-bg-color);
+  background-image: url("https://www.transparenttextures.com/patterns/light-wool.png");
   text-align: center;
   margin: none;
   padding: none;
 }
 h1 {
-  font-family: 'Bangers', cursive;
+  font-family: var(--sec-font);
+}
+
+h3 {
+  font-size: 20px;
 }
 
 h4 {
-  font-family: 'Francois One', sans-serif;
+  font-family: var(--main-font);
 }
 
 body {
   margin: none;
   padding: none;
-  font-family: 'Francois One', 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--main-font);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+.App {}
 
-/* .App {
-  height: 100vh;
-} */
-
-.app-img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0.2;
-}
-
-.app-content {
-  position: relative
-}
-
-        /* -- HEADER AREA -- */
-
-.header {
-  background-color:white;
-  padding-top: 0.25em;
-  padding-bottom: 0.25em;
-  margin: none;
-}
+/* -- HEADER AREA -- */
 
 .header h1 {
   color: black;
@@ -74,213 +56,25 @@ code {
 .header i {
   color: white;
 }
+*/
 
-        /* -- New Game Screen -- */
 
-.start-banner{
+
+       /* -- New Game -- */
+
+    .start-banner {
   padding: 1rem;
 }
-        /* -- MAIN GAME AREA -- */
-
-.main {
-  
-}
-
-.game-area {
-  min-height: 9vh;
-  margin: auto;
-  /* background-color: #0e5809; */
-  background-color: var(--main-bg-color);
-  /* background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #26997c 50%); */
-  background-size: 10px 4px;  
-  padding: 2rem 2rem 6rem 2rem;
-  
-  /* background-color: white; */
-  /* background-image: url("https://www.transparenttextures.com/patterns/gplay.png"); */
-}
-
-.hints-container {
-}
-
-.hints {
-  width: 50%;
-  margin: 0 auto;
-  border-radius: 5px;
-  background-color: inherit;
-  box-shadow: 0 0.5em 1em 0 rgb(85, 85, 85)
-}
-
-#round {
-  background-color: #64A36F;
-
-  color: white;
-}
-
-.img-names-div {
-  padding: 1em 0 4em 0;
-  /* background-color: #fafafa; */
-/* background-image: radial-gradient( ellipse farthest-corner at 10px 10px , #995c4d, #e8e6d5 50%, #027948 50%);
-background-size: 10px 10px; */
-/* background-color: #3bad7f; */
-  /* background-color: #347014; */
-  /* background-color:#49238a ;
-  background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.16'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
-  /* background-image: url("https://images.unsplash.com/photo-1624359136353-f60129a367b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"); */
-}
-
-.img-div {
-  background-color: inherit;
-  box-shadow: none
-}
-
-.dog-names {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.size-clue {
-  margin-top: 1rem;
-  border-bottom: 1px dashed black;
-}
-
-.is-child {
-}
-
-    /* Dog Image */
-
-.img-el {
-}
-
-.dog-img-banner {
-  width: 70%;
-  margin: auto;
-}
-
-.dog-banner-hide {
-  visibility: hidden;
-}
-
-/* .dog-banner-show {
-  font-size: 4em;
-} */
-
-.dog-img {
-  /* object-fit:contain; */
-  max-width: 50%;
-  max-height: 40vh;
-  border-radius: 5px;
-  /* box-shadow: 0 2em 2em 0 black */
-}
-
-.modal-card-head {
-  background-color: var(--sec-bg-color);
-}
-
-.modal-card-head h1 {
-  color: #ffe59d;
-}
-
-.modal-card-body {
-  background-color: var(--main-bg-color);
-  color:black;
-}
-
-.modal-card h4 {
-  color:#555e05;
-}
-
-.directions-bold{
-  color:#555e05;
-}
-
-.popup-shell {
-  background-color: var(--popup-main-color);
-  width: 40%;
-}
-
-.popup-body {
-  background-color:  #abebc6 ;
-}
-
-
-
-    /* Dog Buttons */
-
-.dog-name-btns {
-  background-color: beige;
-  padding: 1rem;
-  border: 3px solid black;
-  border-radius: 50px;
-  text-align: left;
-  min-width: 80%;
-  box-shadow: 0 8px 18px 0 black
-}
-
-.border-gradient {
-  background: 
-    linear-gradient(#000000 0 0) padding-box, /*this is your grey background*/
-    /* linear-gradient(to right, #d7cb3f, #f4cdb8) border-box;
-  color: #313149;
-  border: 10px solid transparent;
-  padding: 0px;
-  border-radius: 50px;
-  display: inline-block;
-  margin: 75px 0; */
-}
-
-.dog-name-btns :disabled {
-
-}
-
-/* .dog-name-btns h4 {
-  max-width: 100%;
-} */
-
-.name-div1{
-  text-align: center;
-  color:#514a4a;
-}
-
-/* .name-div2{
-  width: 100%;
-  height: 100%;
-} */
-.noGuess {
-  background-color: white;
-}
-
-.correctGuess {
-  background-color: green
-}
-
-.incorrectGuess {
-  background-color: red
-}
-
-.greyOut {
-  background-color: grey
-}
-
-
-.hint {
-  display: block;
-  padding: 10px;
-
-}
-
-    /* New Game */
 
 .new-game {
   position: fixed;
   width: 100%;
   height: 100vh;
   background-color: var(--main-bg-color);
-  /* background-color: black; */
-  /* background-image: url("./images/dog_img.jpg"); */
   background-position: center;
   background-size: cover;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   margin: auto;
 }
 
@@ -291,8 +85,8 @@ background-size: 10px 10px; */
   flex-direction: column;
   width: 100%;
   height: 100vh;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   margin: 0 auto;
   background-color: var(--main-bg-color);
   opacity: 0.8;
@@ -304,47 +98,13 @@ background-size: 10px 10px; */
 .new-game-title {
   margin-bottom: 0;
   font-size: 10em;
-  color:#224B0C;
+  color: #224b0c;
   padding: 0;
 }
 
 .new-game-subtitle {
   font-size: 1.5em;
   text-shadow: 0 0 10px black;
-}
-
-.icon {
-  margin: 1rem
-}
-
-/* #directions-background {
-  opacity: 0
-} */
-
-    /* Popup Area */
-
-#next {
-  /* height: 5rem;
-  width: 5rem;
-  border-radius: 10rem; */
-}
-
-#next-btn {
-  margin-left: 0.5rem;
-/* font-size: 2rem; */
-}
-
-@media only screen and (max-width: 768px){
-
-  .new-game-logo {
-    margin-bottom: -3em;
-  }
-  .new-game-title {
-    font-size: 6em;
-  }
-  .new-game-subtitle {
-    font-size: 1em;
-  }
 }
 
 .new-game-btn-div {
@@ -358,9 +118,8 @@ background-size: 10px 10px; */
 .new-game-btn {
   width: 100%;
   border: none;
-  color:#F9F9F9;
+  color: #f9f9f9;
   background-color: black;
-
 }
 
 .new-game-btn h1 {
@@ -369,36 +128,261 @@ background-size: 10px 10px; */
 }
 .new-game-btn:hover {
   border: none;
-  border-radius: 7px
-}
-    /* Popup Area */
-
-.pop-up {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  background: #00000050;
-  top:0;
-  left:0;
-  margin: auto
+  border-radius: 7px;
 }
 
-.pop-up-content {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 10vh;
-  min-height: 30vh;
-  max-height: 90%;
-  max-width: 100%;
+/* -- MAIN GAME AREA -- */
+
+.game-area {
+  min-height: 80vh;
   margin: auto;
+  background-color: var(--main-bg-color);
+  background-size: 10px 4px;
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.hints {
+  width: 30%;
+  margin: 0 auto;
+  border-radius: 5px;
+  /* border: 2px solid black; */
+  background-color: inherit;
+  box-shadow: 0 0.5em 1em 0 rgb(85, 85, 85);
+}
+
+.hint-btn {
+  background-color: var(--hints-color);
+  border: 0.5px solid rgb(154, 154, 154);
+}
+
+#round-banner {
+  background-color: var(--rd-banner-color);
+  color: white;
+  margin: auto;
+  font-size: 2.5rem;
+  box-shadow: 0 0.15em 0.25em 0 rgb(85, 85, 85);
+  border: 1px solid rgb(71, 71, 71);
+}
+
+#settings-shell {
+  background-color: var(--main-bg-color);
+  color: rgb(52, 52, 52);
+}
+
+.img-names-div {
+  padding: 0 0 4em 0;
+  margin: auto;
+}
+
+/* .img-div {
+  background-color: inherit;
+  box-shadow: none;
+  padding-bottom: 0;
+} */
+
+.dog-names {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 90%;
+  margin: auto;
+  padding: 1rem;
+}
+
+.size-clue {
+  margin-top: 1rem;
+  border-bottom: 1px dashed black;
+}
+
+.is-child {
+}
+
+/* -- Dog Image -- */
+
+.img-el {
+}
+
+.dog-img-banner {
+  width: 70%;
+  margin: auto;
+}
+
+.dog-img {
+  /* object-fit:contain; */
+  max-width: 60%;
+  max-height: 45vh;
+  border-radius: 5px;
+  box-shadow: 0 0.5em 1em 0 rgb(85, 85, 85);
+  /* box-shadow: 0 2em 2em 0 black */
+}
+
+/* -- Game Directions -- */
+
+.modal-card-head {
+  background-color: var(--popup-main-color);
+}
+
+.modal-card-head h1 {
+  color: #ffffff;
+}
+
+.modal-card-body {
+  background-color: var(--main-bg-color);
+  color: black;
+}
+
+.modal-card h4 {
+  color: #555e05;
+}
+
+.directions-bold {
+  color: #555e05;
+}
+
+/* -- Result Pop up -- */
+
+.popup-shell {
+  background-color: var(--popup-shell-incorrect-color);
+  min-width: 40%;
+}
+
+.popup-shell-correct {
+  background-color: var();
+  width: 40%;
+}
+
+.popup-shell-incorrect {
+  background-color: var(--popup-shell-color);
+  width: 40%;
+}
+
+.dog-info-shell {
+  background-color: var(--card-content-color);
+  color: rgb(52, 52, 52);
+}
+
+.popup-body {
+  background-color: #abebc6;
+}
+
+/* -- Dog Buttons -- */
+
+.dog-name-btns {
+  background-color: beige;
+  padding: 1rem;
+  border: 2px solid rgb(52, 52, 52);
   border-radius: 20px;
-  background-color: antiquewhite
+  text-align: left;
+  min-width: 80%;
+  box-shadow: 0 8px 18px 0 black;
+}
+
+.border-gradient {
+  background: linear-gradient(#000000 0 0) padding-box; /*this is your grey background*/
+  /* linear-gradient(to right, #d7cb3f, #f4cdb8) border-box;
+  color: #313149;
+  border: 10px solid transparent;
+  padding: 0px;
+  border-radius: 50px;
+  display: inline-block;
+  margin: 75px 0; */
+}
+
+.dog-name-btns :disabled {
+}
+
+.name-div1 {
+  margin: 0.5rem 0 0 0;
+  padding: 0.5rem;
+}
+
+.name-div2 {
+  text-align: center;
+  color: #514a4a;
+}
+
+.noGuess {
+  background-color: white;
+}
+
+.correctGuess {
+  background-color: green;
+}
+
+.incorrectGuess {
+  background-color: red;
+}
+
+.greyOut {
+  background-color: grey;
+}
+
+/* -- Popup Area -- */
+
+.rank-desc {
+  color: white;
+}
+
+.dog-rank {
+  font-family: var(--sec-font);
+}
+
+#result-buttons {
+  padding: 1rem;
+}
+
+#next-btn {
+  /* border: none; */
+  background-color: rgb(7, 167, 71);
+  /* background-color: rgb(32, 86, 210); */
+}
+
+#dog-pack-btn {
+  background-color: rgb(45, 84, 193);
+  background-color: rgb(82, 47, 153);
+}
+
+.back-btn {
+  background-color: rgb(58, 38, 207);
+  background-color: rgb(84, 83, 83);
+}
+
+.result-btn {
+  border: 1px solid white;
+  margin-left: 1rem;
+  font-family: var(--sec-font);
+  color: white;
+}
+
+.icon {
+  margin: 2rem;
+  /* color: #ffe59d; */
+  padding: 1rem;
+}
+
+.result-correct {
+  background-color: var(--popup-main-color);
+  color: white;
+}
+
+.result-incorrect {
+  background-color: rgb(84, 83, 83);
+  color: white;
+}
+
+.dog-pack-shell {
+  background-color: var(--popup-main-color);
 }
 
 .round-main {
-  width: 100%;
-  margin: auto;
+  color: white;
+}
+
+.round-main h1 {
+  color: white;
+}
+
+.round-main h5 {
+  color: white;
 }
 
 .dog-card-result {
@@ -420,6 +404,13 @@ background-size: 10px 10px; */
   margin: auto;
 }
 
+#completed-msg {
+  background-color: var(--hints-color);
+  color: rgb(54, 54, 54)
+}
+
+/* -- Dog Info -- */
+
 .info-dog-img {
   max-width: 50%;
   max-height: 30vh;
@@ -431,20 +422,28 @@ background-size: 10px 10px; */
   object-fit: contain;
 }
 
+/* -- Dog Card -- */
+
 .dog-card-content {
-  background-color: inherit;
+  background-color: var(--card-content-color);
   border: 1px solid rgb(183, 183, 183);
-  box-shadow: 0 5px 10px 0 rgb(67, 67, 67)
+  box-shadow: 0 5px 10px 0 rgb(67, 67, 67);
+}
+
+.dog-card-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .dog-card {
-    justify-content: center;
-    justify-self: center;
-    max-width: 40%;
-    padding: rem;
-    margin: 2rem;
-    background-color: inherit;
-    box-shadow: none
+  justify-content: center;
+  justify-self: center;
+  max-width: 40%;
+  padding: 0.5rem;
+  margin: none;
+  background-color: inherit;
+  box-shadow: none;
 }
 
 .dog-card-shell {
@@ -455,4 +454,84 @@ background-size: 10px 10px; */
 .dog-card-name {
   margin: 1rem;
 }
-/* -- FOOTER AREA -- */
+
+/* -----  CELLPHONE SCREEN  ----- */
+@media only screen and (max-width: 768px) {
+  .new-game-logo {
+    margin-bottom: -3em;
+  }
+  .new-game-title {
+    font-size: 6em;
+  }
+  .new-game-subtitle {
+    font-size: 1em;
+  }
+
+  .game-area {
+    padding: 0.5rem 1rem;
+  }
+
+  #round-banner {
+    font-size: 1.5rem;
+    padding: 0.75rem;
+  }
+
+  .dog-img {
+    max-width: 100%;
+    max-height: 40vh;
+  }
+
+  .hints {
+    width: 100%;
+    background-color: ;
+  }
+  
+
+  .dog-names {
+    display: block;
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .name-div1 {
+    margin: 0;
+    padding: 0;
+  }
+
+  .dog-name-btns {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .popup-shell {
+    max-width: 95%;
+    margin: auto;
+  }
+
+  .dog-card {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .dog-pack-shell {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .dog-info-shell {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  #settings-shell {
+    max-width: 90%;
+    margin: auto;
+  }
+
+  .modal-card {
+    max-width: 90%;
+  }
+}

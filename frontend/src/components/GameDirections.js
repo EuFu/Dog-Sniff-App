@@ -33,7 +33,7 @@ function GameDirections(props) {
                 <div className="block has-text-left">
                   <p>
                     You have 3 hints available at your disposal. Use them if you
-                    get stuck! But be careful, each hint can only be used
+                    get stuck! Be careful though, each hint can only be used
                     once...
                   </p>
                   <ul>
@@ -54,7 +54,7 @@ function GameDirections(props) {
                 <div className="block">
                   <h4 className="directions-bold">More</h4>
                   <p>
-                    If you want to know more about the correct dog, tap the dog card shown after each round. Each dog guessed correctly will be added to your "Dog Pack", whose info you can access in between rounds.
+                    If you want to know more about the correct dog, tap the dog card shown after each round. Each dog guessed correctly will be added to your "Dog Pack", which you can access between rounds by clicking on the dog icon.
                   </p>
                 </div>
                 <h4 className="title is-5 directions-bold">

@@ -4,12 +4,13 @@ function DogCard(props) {
   const { setDogCard, toggleInfo } = usePopUp();
 
   return (
+    <div className="tile is-child is-flex is-justify-content-center">
     <div onClick={() => {
       setDogCard(props.dog);
       toggleInfo();
-    }} className="tile is-parent box dog-card  ">
+    }} className="tile is-parent box dog-card">
     <div className="tile is-child box dog-card-content">
-      <figure class="image is-96x96 block container">
+      <figure class="image is-128x128 block container">
         <img className="dog-card-img" src={props.dog.image.url} alt="Dog" />
       </figure>
       <button
@@ -18,6 +19,7 @@ function DogCard(props) {
         {props.dog.name}
       </button>
       </div>
+    </div>
     </div>
   );
 }

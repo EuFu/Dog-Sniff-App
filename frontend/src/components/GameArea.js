@@ -74,33 +74,25 @@ function GameArea(props) {
     toggleSound,
   } = useSettings();
 
-  useEffect(() => {
-
-  }, [imageLoaded])
+  useEffect(() => {}, [imageLoaded]);
 
   return (
     <section className="game-area">
-      <h1 className="title is-2 box" id="round">
-        Round: {round}
-      </h1>
       {round > 0 ? (
         <div className="">
+        <h1 className="box" id="round-banner">
+        Round: {round}
+      </h1>
           {/* <div className={`modal ${props.help || props.round < 1 ? "is-active" : ""}`}>
             <GameDirections 
               handleClick={props.toggleHelp}
             />
           </div> */}
-          <div className="img-names-div columns tile is-parent is-vertical">
-            <DogImage
-              // correctDog={correctDog}
-              // generateRound={generateRound}
-              // round={round}
-              // sizeClue={sizeClue}
-              // showCorrectName={showCorrectName}
-            />
+          <div className="img-names-div columns tile is-parent is-vertical ">
+            <DogImage />
             <div className={`modal ${help ? "is-active" : ""}`}>
               <GameDirections
-                 type={"info"}
+                type={"info"}
                 // selectClass={"animate__fadeInDown"}
               />
             </div>
@@ -112,46 +104,19 @@ function GameArea(props) {
                 </h4>
               ) : null}
             </div>
-            <Hints
-              // fFState={fFState}
-              // handleFifty={handleFifty}
-              // sizeState={sizeState}
-              // handleSize={handleSize}
-              // selectLetters={selectLetters}
-              // letterClue={letterClue}
-              // round={round}
-              // toggleHelp={toggleHelp}
-            />
-            {imageLoaded ? 
-              <DogName />
-            : null}
-            
+            <Hints />
+            {imageLoaded ? <DogName /> : null}
           </div>
-          {/* {popup ? (
-            <Popup
-              // round={round}
-              // correctDog={correctDog}
-              // previousDogs={previousDogs}
-              // selected={selected}
-              // userLevel={userLevel}
-              // clearRound={clearRound}
-              // resetGame={resetGame}
-              // dogPack={dogPack}
-              // toggleDogPack={toggleDogPack}
-            />
-          ) : null} */}
         </div>
       ) : (
         <div>
-          <div className="is-active ">
-            <GameDirections 
-              type={"newGame"}
-            />
+          <div className="modal is-active ">
+            <GameDirections type={"newGame"} />
           </div>
         </div>
       )}
     </section>
-    
+
     /* <section className="game-area">
         <div className="">
           <Hints
@@ -253,7 +218,6 @@ function GameArea(props) {
       
     </section> */
   );
-            
 }
 
 export default GameArea;

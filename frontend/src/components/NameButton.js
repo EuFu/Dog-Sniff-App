@@ -38,9 +38,9 @@ function NameButton(props) {
       : setClassStyle("is-danger animate__shakeX");
   }
   return (
-    <div className=" level p-2 column is-vcentered section">
-      <div className="name-div1">
-        <div className={`name-div2 ${sizeClue ? " " : ""}`}>
+    <div className="level name-div1 column is-vcentered">
+      <div className="name-div2">
+        <div className={`${sizeClue ? " " : ""}`}>
           <button
             type="submit"
             className={`dog-name-btns button animate__animated animate__flipInX is-slower names.includes(${props.dog.name}) ? ${classStyle} : null`}

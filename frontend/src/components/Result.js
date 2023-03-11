@@ -11,7 +11,8 @@ function Result(props) {
     dogCard,
     round,
     correctDog,
-    userLevel,
+    userRank,
+    rankDescription,
     resetGame,
     clearRound,
   } = useGameRound();
@@ -23,119 +24,104 @@ function Result(props) {
   console.log(previousDogs);
   console.log(selected.count);
   return (
-    <div>
+    <>
       <div className="modal-background"></div>
-      <div className="modal-content tile is-ancestor">
+      <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">
         {/* // Round 1-5 component // */}
 
-        <div className="box popup-shell tile is-parent is-vertical">
-          <div className="section round-main tile is-child is-warning is-12">
-            <h1
-              className={`title block is-1 ${
-                round < 6 && correct
-                  ? "animate__animated animate__pulse animate__delay-1s"
-                  : round < 6 && correct === "false"
-                  ? "animate__animated animate__fadeOut animate__delay-2s animate__slower"
-                  : round === 6 && correct
-                  ? "animate__animated animate__heartBeat animate__slow animate__delay-1s"
-                  : "animate__animated animate__fadeOut animate__delay-2s animate__slower"
-              }`}
-            >
-              {correct && round === 6
-                ? "Impeccable Senses"
-                : correct
-                ? "Good sniff!"
-                : "Lost the scent..."}
-            </h1>
-            {correct ? (
-              <h5 className="subtitle block is-6">You are correct!</h5>
-            ) : (
-              <h5>Your guess was incorrect</h5>
-            )}
-            <div className="tile is-ancestor dog-card-result">
-              <DogCard 
-                dog = {correctDog}
-              />
+        <div className="popup-shell tile is-parent is-vertical box">
+          <div className="round-main tile is-child is-warning">
+            <div className="tile is-parent is-vertical">
+              <div className={`tile is-child box ${correct ? "result-correct" : "result-incorrect"}`}>
+                <h1
+                  className={`title block is-1 is-size-3-mobile ${
+                    round < 6 && correct
+                      ? "animate__animated animate__pulse animate__delay-1s"
+                      : round < 6 && correct === "false"
+                      ? "animate__animated animate__fadeOut animate__delay-2s animate__slower"
+                      : round === 6 && correct
+                      ? "animate__animated animate__heartBeat animate__slow animate__delay-1s"
+                      : "animate__animated animate__fadeOut animate__delay-2s animate__slower"
+                  }`}
+                >
+                  {correct && round === 6
+                    ? "Impeccable Senses"
+                    : correct
+                    ? "Good sniff!"
+                    : "Lost the scent..."}
+                </h1>
+                {correct ? (
+                  <h5 className="subtitle block is-6">You are correct!</h5>
+                ) : (
+                  <h5>Your guess was incorrect</h5>
+                )}
+                <div className="tile is-ancestor dog-card-result">
+                  <DogCard dog={correctDog} />
+                </div>
               </div>
-            {/* <figure class="image is-96x96 is-inline-block">
+
+              {/* <figure class="image is-96x96 is-inline-block">
                       <img className="dog-card-img" src={correctDog.image.url} alt="Dog" />
                     </figure>
               <button className="button is-ghost" onClick={toggleInfo}>
                 {correctDog.name}
               </button> */}
-            <div className="progress-div block">
-              <span>
-                Rank: {correct ? userLevel(round) : userLevel(round - 1)}
-              </span>
+              <div className={`tile is-child box ${correct ? "result-correct" : "result-incorrect"}`}>
+              <div className="progress-div ">
+                  {!correct ? userRank(round - 1) 
+                  : userRank(round)}
+                </div>
+                <div className="m-1">
+                  {Array.from({ length: 6 }, (_, i) => i + 1).map((x) => (
+                    <i
+                      className={`fa-solid fa-bone ${
+                        selected.count >= x ? "dog-bone-1" : "dog-bone"
+                      }`}
+                    ></i>
+                  ))}
+                </div>
+                <div>
+                  {!correct? rankDescription(round-1)
+                  : rankDescription(round)}
+                </div>
+              </div>
+
               {correct && round === 6 ? (
-                <span>
-                  <i class="fa-solid fa-crown"></i>
-                </span>
+                <h6 className="subtitle block box is-5" id="completed-msg">
+                  *Congratulations! You have 'sniffed out' all the dogs correctly*
+                </h6>
               ) : null}
             </div>
-            
-            <div>
-              {Array.from({ length: 6 }, (_, i) => i + 1).map((x) => (
-                <i
-                  className={`fa-solid fa-bone ${
-                    selected.count >= x ? "dog-bone-1" : "dog-bone"
-                  }`}
-                ></i>
-              ))}
-              {/* <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 1 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i>
-                  <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 2 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i>
-                  <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 3 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i>
-                  <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 4 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i>
-                  <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 5 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i>
-                  <i
-                    className={`fa-solid fa-bone ${
-                      selected.count >= 6 ? "dog-bone-1" : "dog-bone"
-                    }`}
-                  ></i> */}
-            </div>
-            {correct && round === 6 ? (
-              <h6 className="subtitle block is-5">
-                You have 'sniffed out' all the dogs correctly!
-              </h6>
-            ) : null}
-            
-
-            <div>
-              <button className="button" onClick={toggleDogPack}>
-                Your dogpack
+            <div className="block" id="result-buttons">
+              <button
+                className="button result-btn"
+                id="dog-pack-btn"
+                onClick={toggleDogPack}
+              >
+                <i class="fa-solid fa-dog fa-lg"></i>
               </button>
               {correct && round < 6 ? (
                 <button
-                  className="button is-success is-light"
-                  id="next"
+                  className="button result-btn"
+                  id="next-btn"
                   onClick={clearRound}
                 >
-                  <span>Next</span><i className="fa-solid fa-right-long" id="next-btn"></i>
+                  {/* <i class="fa-solid fa-circle-right fa-4x"></i> */}
+                  <span className="">
+                    <span>Next</span>
+                    <span class="icon is-small">
+                      &nbsp;&nbsp;
+                      <i class=" fa-solid fa-right-long fa-2x"></i>&nbsp;
+                    </span>
+                  </span>
                 </button>
               ) : (
-                <button className="button is-light" onClick={resetGame}>
+                <button
+                  className="button is-light result-btn"
+                  onClick={resetGame}
+                >
                   <span>
-                    <span>Return Home</span>
+                    <span>Start Over</span>
                     <span class="icon is-small">
                       <i class="fa-solid fa-arrow-rotate-left"></i>
                     </span>
@@ -146,7 +132,7 @@ function Result(props) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

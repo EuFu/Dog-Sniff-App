@@ -7,10 +7,10 @@ function DogPack() {
   const { setDogCard, toggleSelected, toggleDogPack } = usePopUp();
 
   return (
-    <div>
+    <>
       <div className="modal-background"></div>
-      <div className="modal-content tile is-ancestor">
-        <div className="box popup-shell tile is-parent is-vertical">
+      <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">
+        <div className="box dog-pack-shell tile is-parent is-vertical">
           <div className="tile is-child">
               <div className=" tile dog-card-shell is-parent is-flex is-flex-wrap-wrap">
                 {selected.correct ? previousDogs.map((dog) => (
@@ -22,18 +22,18 @@ function DogPack() {
         </div>
         <div>
           <button
-              className="button is-ghost"
+              className="button result-btn back-btn"
               onClick={() => {
                 toggleDogPack();
               }}
-            >
+            ><i class="fa-solid fa-left-long"></i>&nbsp;
               Back
             </button>
             </div>
           </div>
           
       </div>
-    </div>
+    </>
   );
 }
 

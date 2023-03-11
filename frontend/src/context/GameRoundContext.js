@@ -123,28 +123,58 @@ function GameRoundContextProvider(props) {
     return dogs[randomIndex];
   };
 
-    // Generate level banner
-    function userLevel(round) {
+    // Generate User Rank 
+    function userRank(round) {
       switch (round) {
         case 0:
-          return "Newborn";
-        case 1:
-          return "Pupper";
+          return <div><b className="title is-4 dog-rank rank-desc">Newborn</b></div>
+          break;
+          case 1:
+          return <div><b className="title is-4 dog-rank rank-desc">Rank: Pupper</b></div>
           break;
         case 2:
-          return "Doggo";
+          return <div><b className="title is-4 dog-rank rank-desc">Rank: Doggo</b></div>
           break;
         case 3:
-          return "Good Dog";
+          return <div><b className="title is-4 dog-rank rank-desc">Rank: Good Dog</b></div>
           break;
         case 4:
-          return "Neighborhood Favorite";
+          return <div><b className="title is-4 dog-rank rank-desc">Rank: Sidekick</b></div>;
           break;
         case 5:
-          return "Rescue Dog";
+          return <div><b className="title is-4 dog-rank rank-desc">Rank: Rescue Dog</b></div>;
           break;
         case 6:
-          return "Pack Leader";
+          return <div><b className="title is-4 dog-rank rank-desc">Pack Leader  <i class="fa-solid fa-crown"></i></b></div>;
+          break;
+        default:
+          return "";
+      }
+    }
+
+    // Generate User Rank Description
+    function rankDescription(round) {
+      switch(round) {
+        case 0:
+          return <p className="subtitle is-6 rank-desc">You're still getting accustomed to your senses, but we all see big potential!</p>
+          break;
+        case 1:
+          return <p className="subtitle is-6 rank-desc">Lot's of enthusiasm and spunk. That nose can only get sharper!</p>
+          break;
+        case 2:
+          return <p className="subtitle is-6 rank-desc">Not Bad! Still lots of room to grow and sharpen those senses.</p>
+          break;
+        case 3:
+          return <p className="subtitle is-6 rank-desc">You've come a long way. Starting to develop a very keen nose indeed!</p>
+          break;
+        case 4:
+          return <p className="subtitle is-6 rank-desc">A reliable friend with sharp senses. Always there to lend a paw!</p>
+          break;
+        case 5:
+          return <p className="subtitle is-6 rank-desc">Trustworthy and experienced. Able to sniff out trouble and save the day!</p>
+          break;
+        case 6:
+          return <p className="subtitle is-6 rank-desc">'The Boss'. 'The Head Honcho'. You've got the sharpest nose of them all!</p>
           break;
         default:
           return "";
@@ -267,7 +297,8 @@ function GameRoundContextProvider(props) {
     resetGame,
     pickDogs,
     pickCorrectDog,
-    userLevel,
+    userRank,
+    rankDescription,
     handleFifty,
     selectLetters,
     shuffleDogs,

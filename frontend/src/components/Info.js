@@ -5,10 +5,11 @@ function Info(props) {
   const {toggleInfo, toggleSelected} = usePopUp()
 
   return (
-    <div className="">
-        <div className="modal-background"></div>
-          <div className="modal-content tile is-ancestor ">
-          <div className="box popup-shell tile is-child">
+    <>
+        <div className="modal-background "></div>
+          <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">  
+          <div className="box dog-info-shell tile is-parent">
+          <div className="tile is-child">
           <div className="card-image">
               <figure>
                 <img
@@ -51,17 +52,19 @@ function Info(props) {
               ) : null}
               <div className="block mt-3">
               <button
-                className="button is-small"
+                className="button result-btn back-btn"
                 onClick={toggleInfo}
               >
-                <i class="fa-solid fa-arrow-left"></i> Back
+                <i class="fa-solid fa-left-long"></i>&nbsp;
+              Back
               </button>
               </div>
+            </div>
             </div>
           </div>
             
           </div>
-        </div>
+        </>
       )}
 
 export default Info;

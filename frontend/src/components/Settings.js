@@ -26,7 +26,7 @@ function Settings(props) {
         <div id="show-settings" class="modal is-active">
           <div class="modal-background" onClick={toggleExpanded}></div>
           <div class="modal-content">
-            <div>
+            <div className="box" id="settings-shell">
               {sound ? (
                 <i class="fa-solid fa-volume-high fa-2x icon" onClick={toggleSound}></i>
               ) : (

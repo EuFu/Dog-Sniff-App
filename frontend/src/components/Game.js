@@ -286,7 +286,7 @@ function Game(props) {
   // }
 
     return (
-        <div className="main section column is-8 is-offset-2">
+        <div className="column is-12">
         {/* <Header /> */}
           <GameArea
             // dogsInRound={dogsInRound}
