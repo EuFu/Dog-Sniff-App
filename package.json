@@ -2,7 +2,7 @@
   "name": "dogs-app",
   "version": "1.0.0",
   "engines": {
-    "node": "18.15.0"
+    "node": "18.x"
   },
   "description": "Dog guessing game",
   "main": "backend/server.js",
