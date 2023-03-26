@@ -7,6 +7,7 @@ import Popup from "./Popup.js";
 import GameDirections from "./GameDirections";
 import { useGameRound } from "../context/GameRoundContext";
 import { useSettings } from "../context/SettingsContext";
+// import mainMusic from "../sounds/game_main_music.mp3"
 
 function GameArea(props) {
   const {
@@ -74,7 +75,22 @@ function GameArea(props) {
     toggleSound,
   } = useSettings();
 
-  useEffect(() => {}, [imageLoaded]);
+  useEffect(() => {
+  }, [imageLoaded]);
+
+  // useEffect(() => {
+  //   playMain()
+  // }, [])
+
+  // const mainMusic = "https://sampleswap.org/mp3/artist/421507/pipin_140-bpm-elelektro-etno-ambienc-160.mp3"
+
+  // let mainAudio = new Audio(mainMusic);
+  // function playMain() {
+  //   mainAudio.currentTime = 0;
+  //   mainAudio.play();
+  //   mainAudio.loop = true;
+  // }
+
 
   return (
     <section className="game-area">

@@ -25,9 +25,11 @@ function GameRoundContextProvider(props) {
     selected: false,
     correct: false,
     count: 0,
+    dogNum: 0
   });
   const [showCorrectName, setShowCorrectName] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [sound, setSound] = useState(true)
 
   // Generate New Round
   const generateRound = () => {
@@ -58,6 +60,7 @@ function GameRoundContextProvider(props) {
         selected: false,
         correct: false,
         count: prevValue.count,
+        dogNum: 0
       };
     });
     setShowCorrectName(false);
@@ -93,7 +96,8 @@ function GameRoundContextProvider(props) {
       setSelected({
         selected: false,
         correct: false,
-        count: 0
+        count: 0,
+        dogNum: 0
       });
       setShowCorrectName(false)
       setPopup(false);
@@ -239,20 +243,22 @@ function GameRoundContextProvider(props) {
     setSizeState(true);
   }
 
-  function checkAnswer(dogName) {
+  function checkAnswer(dogName, number) {
     correctDog.name === dogName
       ? setSelected((prevValue) => {
           return {
-            selected: prevValue,
+            selected: true,
             correct: true,
-            count: prevValue.count + 1
+            count: prevValue.count + 1,
+            dogNum: number
           };
         })
       : setSelected((prevValue) => {
           return {
-            selected: prevValue,
+            selected: true,
             correct: false,
-            count: prevValue.count
+            count: prevValue.count,
+            dogNum: number
           };
         });
   }

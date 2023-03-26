@@ -18,7 +18,6 @@ function Settings(props) {
       {expanded === true && help ? (
         <div className={`modal ${help === true ? "is-active" : null}`}>
             <GameDirections 
-              
             />
           </div>
       ): expanded ? (

@@ -6,7 +6,7 @@ function NameButton(props) {
   const [showName, setShowName] = useState("hidden");
   const [flipName, setFlipName] = useState("")
   const [isDisabled, setIsDisabled] = useState(false);
-  const {correctDog, fiftyFifty, sizeClue, checkAnswer, togglePopup, setShowCorrectName} = useGameRound()
+  const {correctDog, fiftyFifty, sizeClue, selected, checkAnswer, togglePopup, setShowCorrectName} = useGameRound()
   
   useEffect(() => {
     setClassStyle("");
@@ -44,14 +44,14 @@ function NameButton(props) {
           <button
             type="submit"
             className={`dog-name-btns button animate__animated animate__flipInX is-slower names.includes(${props.dog.name}) ? ${classStyle} : null`}
-            disabled={names.includes(props.dog.name) ? true : false}
+            disabled={names.includes(props.dog.name) || (selected.selected && props.number !== selected.dogNum) ? true : false}
             visibility="hidden"
-            onClick={() => {
+            onClick={!selected.selected ? () => {
               handleClick(props.dog);
-              checkAnswer(props.dog.name);
+              checkAnswer(props.dog.name, props.number);
               setShowCorrectName(true);
               setTimeout(() => togglePopup(), 1500);
-            }}
+            } : null }
           ><span className={flipName} style={{"visibility": showName}}>{assignLetter(props.number)}. &nbsp; <strong>{props.dog.name}</strong></span>
           </button>{" "}
         </div>

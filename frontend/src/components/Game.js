@@ -14,8 +14,35 @@ function Game(props) {
     setAllDogs,
     popup,} = useGameRound()
   const [isReady, setIsReady] = useState(false)
-  // const [newGame, setNewGame] = useState();
   const [sound, setSound] = useState(true)
+
+  useEffect(() => {
+    async function getDog() {
+      await axios.get("/games").then((data) => {
+        setAllDogs(data.data)
+        console.log(data.data)
+      });
+    }
+    getDog();
+  }, []);
+
+  return (
+    <div className="column is-12">
+      <GameArea
+      />
+      {popup ? (
+        <Popup
+        />
+      ) : null}
+      {newGame ? <NewGame /> : null}
+      </div>
+)
+}
+
+export default Game
+
+
+  // const [newGame, setNewGame] = useState();
   // const [round, setRound] = useState(0);
   // const [allDogs, setAllDogs] = useState([]);
   // const [correctDog, setCorrectDog] = useState([]);
@@ -44,16 +71,6 @@ function Game(props) {
   //   exist: false,
   //   source: ""
   // })
-
-  useEffect(() => {
-    async function getDog() {
-      await axios.get("/games").then((data) => {
-        setAllDogs(data.data)
-        console.log(data.data)
-      });
-    }
-    getDog();
-  }, []);
 
   // Generate New Round
   // const generateRound = () => {
@@ -285,53 +302,3 @@ function Game(props) {
   //   }
   // }
 
-    return (
-        <div className="column is-12">
-        {/* <Header /> */}
-          <GameArea
-            // dogsInRound={dogsInRound}
-            // correctDog={correctDog}
-            // checkAnswer={checkAnswer}
-            // fiftyFifty={fiftyFifty}
-            // attributeClue={attributeClue}
-            // sizeClue={sizeClue}
-            // selected={selected}
-            // generateRound={generateRound}
-            // round={round}
-            // togglePopup={togglePopup}
-            // letterClue={letterClue}
-            // fFState={fFState}
-            // handleFifty={handleFifty}
-            // attributeState={attributeState}
-            // handleAttribute={handleAttribute}
-            // sizeState={sizeState}
-            // handleSize={handleSize}
-            // selectLetters={selectLetters}
-            // newGame={newGame}
-            // setNewGame={setNewGame}
-            // help={help}
-            // toggleHelp={toggleHelp}
-            // showCorrectName={showCorrectName}
-            // revealName={setShowCorrectName}
-          />
-          {popup ? (
-            <Popup
-              // correctDog={correctDog}
-              // previousDogs={previousDogs}
-              // selected={selected}
-              // clearRound={clearRound}
-              // togglePopup={togglePopup}
-              // round={round}
-              // userLevel={userLevel}
-              // resetGame={resetGame}
-              // popup={popup}
-              // dogPack={dogPack}
-              // toggleDogPack={toggleDogPack}
-            />
-          ) : null}
-          {newGame ? <NewGame /> : null}
-          </div>
-    )
-}
-
-export default Game

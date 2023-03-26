@@ -17,6 +17,18 @@ function NewGame(props) {
   const [inProp, setInProp] = useState(false);
   const { to, children } = props;
   const navigate = useNavigate();
+  let mainMusic = new Audio("../sounds/game_main_music.mp3")
+
+  useEffect(() => {
+    mainMusic.currentTime = 0;
+    mainMusic.play();
+    // mainMusic.loop = true;
+  },[]) 
+
+  function test() {
+    mainMusic.currentTime = 0;
+    mainMusic.play();
+  }
 
   function delayRedirect(e) {
     e.preventDefault();
