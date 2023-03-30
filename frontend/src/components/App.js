@@ -14,6 +14,7 @@ import {CSSTransition} from 'react-transition-group';
 import PopupContextProvider from "../context/PopupContext.js";
 import GameRoundContextProvider from "../context/GameRoundContext.js";
 import SettingsContextProvider from "../context/SettingsContext.js";
+import SoundsContextProvider from "../context/SoundsContext.js";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <GameRoundContextProvider>
     <PopupContextProvider>
     <SettingsContextProvider>
+    <SoundsContextProvider>
     <Router>
       <div className="App columns">
         {/* <img className="app-img" src="" alt="background" /> */}
@@ -52,6 +54,7 @@ function App() {
           </Routes>
       </div>
     </Router>
+    </SoundsContextProvider>
     </SettingsContextProvider>
     </PopupContextProvider>
     </GameRoundContextProvider>

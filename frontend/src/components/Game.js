@@ -34,7 +34,7 @@ function Game(props) {
         <Popup
         />
       ) : null}
-      {newGame ? <NewGame /> : null}
+      {/* {newGame ? <NewGame /> : null} */}
       </div>
 )
 }

@@ -6,6 +6,7 @@ export const useSettings = () => useContext(SettingsContext)
 
 function SettingsContextProvider(props) {
     const [sound, setSound] = useState(true)
+    const [music, setMusic] = useState(true)
     const [help, setHelp] = useState(false);
     const [expanded, setExpanded] = useState(false)
 
@@ -23,7 +24,11 @@ function SettingsContextProvider(props) {
         setSound(prevValue => !prevValue)
     }
 
-    const values = {sound, setSound, help, setHelp, expanded, setExpanded, toggleHelp, toggleExpanded, toggleSound}
+    function toggleMusic () {
+        setMusic(prevValue => !prevValue)
+    }
+
+    const values = {sound, music, setSound, help, setHelp, expanded, setExpanded, toggleHelp, toggleExpanded, toggleSound, toggleMusic}
 
     return (
         <SettingsContext.Provider value={values}>

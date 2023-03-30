@@ -1,12 +1,14 @@
 import { useState, useContext } from "react";
 import GameDirections from "./GameDirections";
 import { useSettings } from "../context/SettingsContext";
+import { useSounds } from "../context/SoundsContext";
 
 
 
 function Settings(props) {
 
-    const {expanded, help, setExpanded, sound, setSound, toggleExpanded, toggleSound, toggleHelp} = useSettings()
+    const {expanded, help, setExpanded, sound, music, setSound, toggleExpanded, toggleSound, toggleMusic, toggleHelp} = useSettings()
+    const { playMusic, muteMusic, currentMusic } = useSounds()
 
   // <i class="fa-solid fa-volume-high"></i>
   // <i class="fa-solid fa-volume-xmark"></i>
@@ -26,24 +28,29 @@ function Settings(props) {
           <div class="modal-background" onClick={toggleExpanded}></div>
           <div class="modal-content">
             <div className="box" id="settings-shell">
-              {sound ? (
-                <i class="fa-solid fa-volume-high fa-2x icon" onClick={toggleSound}></i>
+              {music ? (
+                <i class="fa-solid fa-music fa-2x icon" onClick={() => {toggleMusic(); muteMusic()}}></i>
               ) : (
-                <i class="fa-solid fa-volume-xmark fa-2x icon" onClick={toggleSound}></i>
+                <i class="fa-solid fa-music fa-2x icon muted" onClick={() => {toggleMusic(); playMusic("menu")}}></i>
               )}
-              <i class="fa-solid fa-circle-info fa-2x icon" onClick={toggleHelp}></i>
+              {sound ? (
+                <i class="fa-solid fa-volume-high fa-2x icon" onClick={() => {toggleSound();}}></i>
+              ) : (
+                <i class="fa-solid fa-volume-xmark fa-2x icon" onClick={()=> {toggleSound();}}></i>
+              )}
+              <i class="fa-solid fa-circle-info fa-2x icon" onClick={() => {toggleHelp(); console.log(sound)}}></i>
             </div>
           </div>
           <button
             class="modal-close is-large"
             aria-label="close"
-            onClick={toggleExpanded}
+            onClick={() => {toggleExpanded(); playMusic("main")}}
           ></button>
         </div>
         </div>
       ) : (
         <div>
-          <i class="fa-solid fa-gear" onClick={toggleExpanded}></i>
+          <i class="fa-solid fa-gear" onClick={() => {toggleExpanded(); playMusic("menu")}}></i>
         </div>
       )}
     </div>

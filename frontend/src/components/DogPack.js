@@ -1,10 +1,13 @@
 import { useGameRound } from "../context/GameRoundContext";
 import { usePopUp } from "../context/PopupContext";
+import { useSounds } from "../context/SoundsContext";
 import DogCard from "./DogCard";
 
 function DogPack() {
   const { selected, previousDogs } = useGameRound();
   const { setDogCard, toggleSelected, toggleDogPack } = usePopUp();
+  const { playSound, click } = useSounds()
+
 
   return (
     <>
@@ -24,6 +27,7 @@ function DogPack() {
           <button
               className="button result-btn back-btn"
               onClick={() => {
+                playSound(click)
                 toggleDogPack();
               }}
             ><i class="fa-solid fa-left-long"></i>&nbsp;

@@ -1,12 +1,15 @@
 import { usePopUp } from "../context/PopupContext";
+import { useSounds } from "../context/SoundsContext";
 
 function DogCard(props) {
   const { setDogCard, toggleInfo } = usePopUp();
+  const { playSound, click } = useSounds()
 
   return (
     <div className="tile is-child is-flex is-justify-content-center">
     <div onClick={() => {
       setDogCard(props.dog);
+      playSound(click)
       toggleInfo();
     }} className="tile is-parent box dog-card">
     <div className="tile is-child box dog-card-content">

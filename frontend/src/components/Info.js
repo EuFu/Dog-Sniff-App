@@ -1,8 +1,10 @@
 import { usePopUp } from "../context/PopupContext";
+import { useSounds } from "../context/SoundsContext";
 
 function Info(props) {
 
   const {toggleInfo, toggleSelected} = usePopUp()
+  const {playSound, click} = useSounds()
 
   return (
     <>
@@ -53,7 +55,10 @@ function Info(props) {
               <div className="block mt-3">
               <button
                 className="button result-btn back-btn"
-                onClick={toggleInfo}
+                onClick={() => {
+                  playSound(click)
+                  toggleInfo();
+                }}
               >
                 <i class="fa-solid fa-left-long"></i>&nbsp;
               Back

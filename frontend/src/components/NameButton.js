@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useGameRound } from "../context/GameRoundContext";
+import { useSounds } from "../context/SoundsContext";
 
 function NameButton(props) {
   const [classStyle, setClassStyle] = useState();
@@ -7,6 +8,7 @@ function NameButton(props) {
   const [flipName, setFlipName] = useState("")
   const [isDisabled, setIsDisabled] = useState(false);
   const {correctDog, fiftyFifty, sizeClue, selected, checkAnswer, togglePopup, setShowCorrectName} = useGameRound()
+  const {playSound, click, bark} = useSounds()
   
   useEffect(() => {
     setClassStyle("");
@@ -37,6 +39,9 @@ function NameButton(props) {
       ? setClassStyle("is-success animate__shakeY")
       : setClassStyle("is-danger animate__shakeX");
   }
+
+  
+
   return (
     <div className="level name-div1 column is-vcentered">
       <div className="name-div2">
@@ -50,7 +55,9 @@ function NameButton(props) {
               handleClick(props.dog);
               checkAnswer(props.dog.name, props.number);
               setShowCorrectName(true);
+              playSound(click);
               setTimeout(() => togglePopup(), 1500);
+              
             } : null }
           ><span className={flipName} style={{"visibility": showName}}>{assignLetter(props.number)}. &nbsp; <strong>{props.dog.name}</strong></span>
           </button>{" "}

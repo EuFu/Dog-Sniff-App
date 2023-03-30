@@ -170,6 +170,11 @@ body {
   color: rgb(52, 52, 52);
 }
 
+.muted {
+  color: #737e40;
+  opacity: 0.5
+}
+
 .img-names-div {
   padding: 0 0 4em 0;
   margin: auto;

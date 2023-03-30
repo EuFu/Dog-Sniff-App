@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import Info from "./Info.js";
 import DogCard from "./DogCard";
 import { usePopUp } from "../context/PopupContext.js";
 import { useGameRound } from "../context/GameRoundContext.js";
+import { useSounds } from "../context/SoundsContext.js";
 
 function Result(props) {
   const {
@@ -15,14 +16,32 @@ function Result(props) {
     rankDescription,
     resetGame,
     clearRound,
+    rendered,
+    setRendered
   } = useGameRound();
   const correct = selected.correct;
 
-  const { setDogCard, toggleSelected, dogPack, toggleDogPack, toggleInfo } =
-    usePopUp();
+  const { playSound, playMusic, resetMusic, click, bark, wahwah, congrats } = useSounds()
+  const { setDogCard, toggleSelected, dogPack, toggleDogPack, toggleInfo } = usePopUp();
+ 
 
-  console.log(previousDogs);
-  console.log(selected.count);
+  
+
+  useEffect(() => {
+    playMusic("pause")
+      if (correct && round === 6) {
+        playSound(congrats)
+      } else if (correct) {
+        playSound(bark)
+      } else {
+        playSound(wahwah)
+      };
+      // setTimeout(() => {
+      //   playMusic("result")
+      // }, 1500)
+  },[])
+
+  
   return (
     <>
       <div className="modal-background"></div>
@@ -35,12 +54,12 @@ function Result(props) {
               <div className={`tile is-child box ${correct ? "result-correct" : "result-incorrect"}`}>
                 <h1
                   className={`title block is-1 is-size-3-mobile ${
-                    round < 6 && correct
-                      ? "animate__animated animate__pulse animate__delay-1s"
+                    round < 6 && correct 
+                      ? "animate__animated animate__heartBeat"
                       : round < 6 && correct === "false"
                       ? "animate__animated animate__fadeOut animate__delay-2s animate__slower"
-                      : round === 6 && correct
-                      ? "animate__animated animate__heartBeat animate__slow animate__delay-1s"
+                      : round === 6 && correct  
+                      ? "animate__animated animate__zoomIn"
                       : "animate__animated animate__fadeOut animate__delay-2s animate__slower"
                   }`}
                 >
@@ -96,7 +115,10 @@ function Result(props) {
               <button
                 className="button result-btn"
                 id="dog-pack-btn"
-                onClick={toggleDogPack}
+                onClick={() => {
+                  playSound(click)
+                  toggleDogPack();
+                  }}
               >
                 <i class="fa-solid fa-dog fa-lg"></i>
               </button>
@@ -104,7 +126,13 @@ function Result(props) {
                 <button
                   className="button result-btn"
                   id="next-btn"
-                  onClick={clearRound}
+                  onClick={() => {
+                    playSound(click);
+                    resetMusic()
+                    playMusic("main")
+                    setRendered(false)
+                    clearRound();
+                    }}
                 >
                   {/* <i class="fa-solid fa-circle-right fa-4x"></i> */}
                   <span className="">
@@ -118,7 +146,11 @@ function Result(props) {
               ) : (
                 <button
                   className="button is-light result-btn"
-                  onClick={resetGame}
+                  onClick={() => {
+                    playSound(click)
+                    resetMusic()
+                    resetGame()
+                  }}
                 >
                   <span>
                     <span>Start Over</span>

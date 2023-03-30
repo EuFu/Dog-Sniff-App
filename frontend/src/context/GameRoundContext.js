@@ -30,6 +30,7 @@ function GameRoundContextProvider(props) {
   const [showCorrectName, setShowCorrectName] = useState(false);
   const [popup, setPopup] = useState(false);
   const [sound, setSound] = useState(true)
+  const [rendered, setRendered] = useState(round)
 
   // Generate New Round
   const generateRound = () => {
@@ -310,7 +311,9 @@ function GameRoundContextProvider(props) {
     shuffleDogs,
     handleSize,
     checkAnswer,
-    togglePopup
+    togglePopup,
+    rendered,
+    setRendered
   };
 
   return (

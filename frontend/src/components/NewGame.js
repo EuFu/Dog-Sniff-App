@@ -9,26 +9,15 @@ import {
 import { CSSTransition } from "react-transition-group";
 import GameDirections from "./GameDirections.js";
 import Settings from "./Settings.js";
-import SettingsContextProvider from "../context/SettingsContext";
 import Game from "./Game.js";
+import { useSounds } from "../context/SoundsContext.js";
 
 function NewGame(props) {
   const [fade, setFade] = useState(false);
   const [inProp, setInProp] = useState(false);
   const { to, children } = props;
   const navigate = useNavigate();
-  let mainMusic = new Audio("../sounds/game_main_music.mp3")
 
-  useEffect(() => {
-    mainMusic.currentTime = 0;
-    mainMusic.play();
-    // mainMusic.loop = true;
-  },[]) 
-
-  function test() {
-    mainMusic.currentTime = 0;
-    mainMusic.play();
-  }
 
   function delayRedirect(e) {
     e.preventDefault();
@@ -37,14 +26,14 @@ function NewGame(props) {
   }
 
   return (
-    <div className="new-game">
+    <div className="new-game animate__animated animate__slideInRight">
       <div
         className={`new-game-content ${
           fade ? "animate__animated animate__fadeOutLeft" : ""
         }`}
       >
         <div className=" section">
-          <div className="new-game-logo level-item animate__animated animate__heartBeat  animate__slow animate__delay-1s py-small">
+          <div className="new-game-logo level-item py-small">
             <span className="">
               <h1 className="new-game-title">Sniff</h1>
             </span>
@@ -59,9 +48,7 @@ function NewGame(props) {
         </div>
         <div className="new-game-btn-div level">
           <div className="level-item">
-            <SettingsContextProvider>
               <Settings className="start-banner" />
-            </SettingsContextProvider>
             <Link
               to={{
                 pathname: `/game`,
