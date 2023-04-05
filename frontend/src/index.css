@@ -66,6 +66,15 @@ body {
   padding: 1rem;
 }
 
+.start {
+  font-size: 1.125rem;
+  color: white;
+}
+
+.start:hover {
+  color: var(--sec-bg-color)
+}
+
 .new-game {
   /* display: flex;
   align-items: center; */
@@ -108,7 +117,8 @@ body {
 }
 
 .new-game-btn-div {
-  background-color: #260e01;
+  background-color: inherit;
+  /* background-color: #260e01; */
 }
 
 .new-game-btn-div h1 {
@@ -177,7 +187,7 @@ body {
 
 .img-names-div {
   padding: 0 0 4em 0;
-  margin: auto;
+  margin: 0.25rem 0 0 0
 }
 
 /* .img-div {
@@ -249,6 +259,7 @@ body {
 .popup-shell {
   background-color: var(--popup-shell-incorrect-color);
   min-width: 40%;
+  max-height: 100vh;
 }
 
 .popup-shell-correct {
@@ -270,27 +281,20 @@ body {
   background-color: #abebc6;
 }
 
+.result-container {
+  max-height: 100vh;
+}
+
 /* -- Dog Buttons -- */
 
 .dog-name-btns {
   background-color: beige;
-  padding: 1rem;
+  padding: 0.5rem;
   border: 2px solid rgb(52, 52, 52);
   border-radius: 20px;
   text-align: left;
   min-width: 80%;
   box-shadow: 0 8px 18px 0 black;
-}
-
-.border-gradient {
-  background: linear-gradient(#000000 0 0) padding-box; /*this is your grey background*/
-  /* linear-gradient(to right, #d7cb3f, #f4cdb8) border-box;
-  color: #313149;
-  border: 10px solid transparent;
-  padding: 0px;
-  border-radius: 50px;
-  display: inline-block;
-  margin: 75px 0; */
 }
 
 .dog-name-btns :disabled {
@@ -474,7 +478,12 @@ body {
   }
 
   .game-area {
-    padding: 0.5rem 1rem;
+    padding: 0.25rem 1rem;
+    max-height: 100vh;
+  }
+
+  .img-names-div {
+    margin: 5px 0 0 0
   }
 
   #round-banner {
@@ -514,7 +523,7 @@ body {
 
   .popup-shell {
     max-width: 95%;
-    margin: auto;
+    
   }
 
   .dog-card {

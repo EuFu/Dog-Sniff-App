@@ -2,17 +2,16 @@ import { usePopUp } from "../context/PopupContext";
 import { useSounds } from "../context/SoundsContext";
 
 function Info(props) {
-
-  const {toggleInfo, toggleSelected} = usePopUp()
-  const {playSound, click} = useSounds()
+  const { toggleInfo } = usePopUp();
+  const { playSound, click } = useSounds();
 
   return (
     <>
-        <div className="modal-background "></div>
-          <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">  
-          <div className="box dog-info-shell tile is-parent">
+      <div className="modal-background "></div>
+      <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">
+        <div className="box dog-info-shell tile is-parent">
           <div className="tile is-child">
-          <div className="card-image">
+            <div className="card-image">
               <figure>
                 <img
                   src={props.dog.image.url}
@@ -25,9 +24,7 @@ function Info(props) {
               </figure>
             </div>
             <div className="dog-info block">
-              {props.dog.temperament ? (
-                <p>{props.dog.temperament}</p>
-              ) : null}
+              {props.dog.temperament ? <p>{props.dog.temperament}</p> : null}
               {props.dog.height ? (
                 <p>
                   Height: {props.dog.height.imperial} in. /{" "}
@@ -53,23 +50,22 @@ function Info(props) {
                 <p>Breed group: {props.dog.breed_group}</p>
               ) : null}
               <div className="block mt-3">
-              <button
-                className="button result-btn back-btn"
-                onClick={() => {
-                  playSound(click)
-                  toggleInfo();
-                }}
-              >
-                <i class="fa-solid fa-left-long"></i>&nbsp;
-              Back
-              </button>
+                <button
+                  className="button result-btn back-btn"
+                  onClick={() => {
+                    playSound(click);
+                    toggleInfo();
+                  }}
+                >
+                  <i class="fa-solid fa-left-long"></i>&nbsp; Back
+                </button>
               </div>
             </div>
-            </div>
           </div>
-            
-          </div>
-        </>
-      )}
+        </div>
+      </div>
+    </>
+  );
+}
 
 export default Info;

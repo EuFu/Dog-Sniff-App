@@ -1,23 +1,13 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
-import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
-import GameArea from './GameArea.js'
 import { useGameRound } from "../context/GameRoundContext.js";
 import { useSettings } from "../context/SettingsContext.js";
 import { useSounds } from "../context/SoundsContext.js";
 
 function GameDirections(props) {
-  const {round, generateRound} = useGameRound()
+  const {generateRound} = useGameRound()
   const {toggleHelp} = useSettings()
-  const {playMusic, currentMusic} = useSounds()
+  const {playMusic, playSound, click } = useSounds()
 
-  // useEffect(() => {
-  //   playMusic("menu")
-  // }, [])
-
-  function loopAudio() {
-    
-  }
     return (
         <>
             <div className="modal-background" id="directions-background"></div>
@@ -27,7 +17,7 @@ function GameDirections(props) {
                 <button
                   className="delete"
                   aria-label="close"
-                  onClick={props.type === "newGame" ? (() => {generateRound(); playMusic("main")}): toggleHelp}
+                  onClick={props.type === "newGame" ? (() => {playSound(click); generateRound(); playMusic("main")}): () => {playSound(click); toggleHelp()}}
                 ></button>
               </header>
               <section className="modal-card-body">

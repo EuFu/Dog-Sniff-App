@@ -1,64 +1,62 @@
-import { useState, useContext, useEffect, useRef } from "react";
-import Info from "./Info.js";
+import { useEffect } from "react";
 import DogCard from "./DogCard";
 import { usePopUp } from "../context/PopupContext.js";
 import { useGameRound } from "../context/GameRoundContext.js";
 import { useSounds } from "../context/SoundsContext.js";
 
-function Result(props) {
+function Result() {
   const {
     selected,
-    previousDogs,
-    dogCard,
     round,
     correctDog,
     userRank,
     rankDescription,
     resetGame,
     clearRound,
-    rendered,
-    setRendered
+    setRendered,
   } = useGameRound();
+
   const correct = selected.correct;
 
-  const { playSound, playMusic, resetMusic, click, bark, wahwah, congrats } = useSounds()
-  const { setDogCard, toggleSelected, dogPack, toggleDogPack, toggleInfo } = usePopUp();
- 
-
+  const { playSound, playMusic, resetMusic, click, bark, wahwah, congrats } = useSounds();
   
+  const { toggleDogPack } = usePopUp();
 
   useEffect(() => {
-    playMusic("pause")
-      if (correct && round === 6) {
-        playSound(congrats)
-      } else if (correct) {
-        playSound(bark)
-      } else {
-        playSound(wahwah)
-      };
-      // setTimeout(() => {
-      //   playMusic("result")
-      // }, 1500)
-  },[])
+    playMusic("pause");
+    if (correct && round === 6) {
+      playSound(congrats);
+    } else if (correct) {
+      playSound(bark);
+    } else {
+      playSound(wahwah);
+    }
+    // setTimeout(() => {
+    //   playMusic("result")
+    // }, 1500)
+  }, []);
 
-  
   return (
     <>
       <div className="modal-background"></div>
-      <div className="modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">
+      <div className="result-container modal-content tile is-ancestor is-flex is-justify-content-center is-align-items-center">
         {/* // Round 1-5 component // */}
 
         <div className="popup-shell tile is-parent is-vertical box">
           <div className="round-main tile is-child is-warning">
             <div className="tile is-parent is-vertical">
-              <div className={`tile is-child box ${correct ? "result-correct" : "result-incorrect"}`}>
+              <div
+                className={`tile is-child box ${
+                  correct ? "result-correct" : "result-incorrect"
+                }`}
+              >
                 <h1
                   className={`title block is-1 is-size-3-mobile ${
-                    round < 6 && correct 
+                    round < 6 && correct
                       ? "animate__animated animate__heartBeat"
                       : round < 6 && correct === "false"
                       ? "animate__animated animate__fadeOut animate__delay-2s animate__slower"
-                      : round === 6 && correct  
+                      : round === 6 && correct
                       ? "animate__animated animate__zoomIn"
                       : "animate__animated animate__fadeOut animate__delay-2s animate__slower"
                   }`}
@@ -78,17 +76,13 @@ function Result(props) {
                   <DogCard dog={correctDog} />
                 </div>
               </div>
-
-              {/* <figure class="image is-96x96 is-inline-block">
-                      <img className="dog-card-img" src={correctDog.image.url} alt="Dog" />
-                    </figure>
-              <button className="button is-ghost" onClick={toggleInfo}>
-                {correctDog.name}
-              </button> */}
-              <div className={`tile is-child box ${correct ? "result-correct" : "result-incorrect"}`}>
-              <div className="progress-div ">
-                  {!correct ? userRank(round - 1) 
-                  : userRank(round)}
+              <div
+                className={`tile is-child box ${
+                  correct ? "result-correct" : "result-incorrect"
+                }`}
+              >
+                <div className="progress-div ">
+                  {!correct ? userRank(round - 1) : userRank(round)}
                 </div>
                 <div className="m-1">
                   {Array.from({ length: 6 }, (_, i) => i + 1).map((x) => (
@@ -100,14 +94,16 @@ function Result(props) {
                   ))}
                 </div>
                 <div>
-                  {!correct? rankDescription(round-1)
-                  : rankDescription(round)}
+                  {!correct
+                    ? rankDescription(round - 1)
+                    : rankDescription(round)}
                 </div>
               </div>
 
               {correct && round === 6 ? (
                 <h6 className="subtitle block box is-5" id="completed-msg">
-                  *Congratulations! You have 'sniffed out' all the dogs correctly*
+                  *Congratulations! You have 'sniffed out' all the dogs
+                  correctly*
                 </h6>
               ) : null}
             </div>
@@ -116,9 +112,9 @@ function Result(props) {
                 className="button result-btn"
                 id="dog-pack-btn"
                 onClick={() => {
-                  playSound(click)
+                  playSound(click);
                   toggleDogPack();
-                  }}
+                }}
               >
                 <i class="fa-solid fa-dog fa-lg"></i>
               </button>
@@ -128,13 +124,12 @@ function Result(props) {
                   id="next-btn"
                   onClick={() => {
                     playSound(click);
-                    resetMusic()
-                    playMusic("main")
-                    setRendered(false)
+                    resetMusic();
+                    playMusic("main");
+                    setRendered(false);
                     clearRound();
-                    }}
+                  }}
                 >
-                  {/* <i class="fa-solid fa-circle-right fa-4x"></i> */}
                   <span className="">
                     <span>Next</span>
                     <span class="icon is-small">
@@ -147,9 +142,9 @@ function Result(props) {
                 <button
                   className="button is-light result-btn"
                   onClick={() => {
-                    playSound(click)
-                    resetMusic()
-                    resetGame()
+                    playSound(click);
+                    resetMusic();
+                    resetGame();
                   }}
                 >
                   <span>

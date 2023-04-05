@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,8 +9,6 @@ import {
 import { CSSTransition } from "react-transition-group";
 import GameDirections from "./GameDirections.js";
 import Settings from "./Settings.js";
-import Game from "./Game.js";
-import { useSounds } from "../context/SoundsContext.js";
 
 function NewGame(props) {
   const [fade, setFade] = useState(false);
@@ -44,7 +42,6 @@ function NewGame(props) {
           </div>
         </div>
         <div>
-          {/* <h4 className="new-game-subtitle">A Dog Guessing Game</h4> */}
         </div>
         <div className="new-game-btn-div level">
           <div className="level-item">
@@ -57,7 +54,7 @@ function NewGame(props) {
               onClick={delayRedirect}
               className="start-banner"
             >
-              <div class="fa-solid fa-paw"> Start</div>
+              <div className="start"> Start <i class="fa-solid fa-chevron-right"></i></div>
             </Link>
           </div>
         </div>

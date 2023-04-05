@@ -2,7 +2,7 @@ import { useState, createContext, useContext } from "react";
 
 const GameRoundContext = createContext();
 
-export const useGameRound = () => useContext(GameRoundContext)
+export const useGameRound = () => useContext(GameRoundContext);
 
 function GameRoundContextProvider(props) {
   const [newGame, setNewGame] = useState();
@@ -10,7 +10,7 @@ function GameRoundContextProvider(props) {
   const [allDogs, setAllDogs] = useState([]);
   const [correctDog, setCorrectDog] = useState([]);
   const [dogsInRound, setDogsInRound] = useState([]);
-  const [imageLoaded, setImageLoaded] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [previousDogs, setPreviousDogs] = useState([]);
   const [fiftyFifty, setFiftyFifty] = useState([]);
   const [fFState, setfFState] = useState(false);
@@ -25,16 +25,15 @@ function GameRoundContextProvider(props) {
     selected: false,
     correct: false,
     count: 0,
-    dogNum: 0
+    dogNum: 0,
   });
   const [showCorrectName, setShowCorrectName] = useState(false);
   const [popup, setPopup] = useState(false);
-  const [sound, setSound] = useState(true)
-  const [rendered, setRendered] = useState(round)
+  const [rendered, setRendered] = useState(round);
 
   // Generate New Round
   const generateRound = () => {
-    setImageLoaded(false)
+    setImageLoaded(false);
     const dogs = pickDogs();
     setDogsInRound(dogs);
     const correctDog = pickCorrectDog(dogs);
@@ -46,7 +45,6 @@ function GameRoundContextProvider(props) {
       return prevValue + 1;
     });
     setNewGame(false);
-    // getMoreInfo(correctDog.name);
   };
 
   // Clear round and generate new round
@@ -54,22 +52,17 @@ function GameRoundContextProvider(props) {
     setDogsInRound([]);
     setCorrectDog([]);
     setFiftyFifty([]);
-    // setAttributeClue(false)
     setSizeClue(false);
     setSelected((prevValue) => {
       return {
         selected: false,
         correct: false,
         count: prevValue.count,
-        dogNum: 0
+        dogNum: 0,
       };
     });
     setShowCorrectName(false);
     setPopup(false);
-    // setExternalLink({
-    //   exist: false,
-    //   source: ""
-    // })
     setLetterClue((prevValue) => {
       return {
         used: prevValue.used,
@@ -80,30 +73,30 @@ function GameRoundContextProvider(props) {
     generateRound();
   }
 
-    // Reset Game
-    function resetGame() {
-      setCorrectDog([]);
-      setDogsInRound([]);
-      setPreviousDogs([]);
-      setFiftyFifty([]);
-      setfFState(false);
-      setSizeClue(false);
-      setSizeState(false);
-      setLetterClue({
-        used: false,
-        show: false,
-        letters: [],
-      });
-      setSelected({
-        selected: false,
-        correct: false,
-        count: 0,
-        dogNum: 0
-      });
-      setShowCorrectName(false)
-      setPopup(false);
-      setRound(0);
-    }
+  // Reset Game
+  function resetGame() {
+    setCorrectDog([]);
+    setDogsInRound([]);
+    setPreviousDogs([]);
+    setFiftyFifty([]);
+    setfFState(false);
+    setSizeClue(false);
+    setSizeState(false);
+    setLetterClue({
+      used: false,
+      show: false,
+      letters: [],
+    });
+    setSelected({
+      selected: false,
+      correct: false,
+      count: 0,
+      dogNum: 0,
+    });
+    setShowCorrectName(false);
+    setPopup(false);
+    setRound(0);
+  }
 
   // Pick 4 random dogs for round
   const pickDogs = () => {
@@ -128,65 +121,126 @@ function GameRoundContextProvider(props) {
     return dogs[randomIndex];
   };
 
-    // Generate User Rank 
-    function userRank(round) {
-      switch (round) {
-        case 0:
-          return <div><b className="title is-4 dog-rank rank-desc">Newborn</b></div>
-          break;
-          case 1:
-          return <div><b className="title is-4 dog-rank rank-desc">Rank: Pupper</b></div>
-          break;
-        case 2:
-          return <div><b className="title is-4 dog-rank rank-desc">Rank: Doggo</b></div>
-          break;
-        case 3:
-          return <div><b className="title is-4 dog-rank rank-desc">Rank: Good Dog</b></div>
-          break;
-        case 4:
-          return <div><b className="title is-4 dog-rank rank-desc">Rank: Sidekick</b></div>;
-          break;
-        case 5:
-          return <div><b className="title is-4 dog-rank rank-desc">Rank: Rescue Dog</b></div>;
-          break;
-        case 6:
-          return <div><b className="title is-4 dog-rank rank-desc">Pack Leader  <i class="fa-solid fa-crown"></i></b></div>;
-          break;
-        default:
-          return "";
-      }
+  // Generate User Rank
+  function userRank(round) {
+    switch (round) {
+      case 0:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Newborn</b>
+          </div>
+        );
+        break;
+      case 1:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Rank: Pupper</b>
+          </div>
+        );
+        break;
+      case 2:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Rank: Doggo</b>
+          </div>
+        );
+        break;
+      case 3:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Rank: Good Dog</b>
+          </div>
+        );
+        break;
+      case 4:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Rank: Sidekick</b>
+          </div>
+        );
+        break;
+      case 5:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">Rank: Rescue Dog</b>
+          </div>
+        );
+        break;
+      case 6:
+        return (
+          <div>
+            <b className="title is-4 dog-rank rank-desc">
+              Pack Leader <i class="fa-solid fa-crown"></i>
+            </b>
+          </div>
+        );
+        break;
+      default:
+        return "";
     }
+  }
 
-    // Generate User Rank Description
-    function rankDescription(round) {
-      switch(round) {
-        case 0:
-          return <p className="subtitle is-6 rank-desc">You're still getting accustomed to your senses, but we all see big potential!</p>
-          break;
-        case 1:
-          return <p className="subtitle is-6 rank-desc">Lot's of enthusiasm and spunk. That nose can only get sharper!</p>
-          break;
-        case 2:
-          return <p className="subtitle is-6 rank-desc">Not Bad! Still lots of room to grow and sharpen those senses.</p>
-          break;
-        case 3:
-          return <p className="subtitle is-6 rank-desc">You've come a long way. Starting to develop a very keen nose indeed!</p>
-          break;
-        case 4:
-          return <p className="subtitle is-6 rank-desc">A reliable friend with sharp senses. Always there to lend a paw!</p>
-          break;
-        case 5:
-          return <p className="subtitle is-6 rank-desc">Trustworthy and experienced. Able to sniff out trouble and save the day!</p>
-          break;
-        case 6:
-          return <p className="subtitle is-6 rank-desc">'The Boss'. 'The Head Honcho'. You've got the sharpest nose of them all!</p>
-          break;
-        default:
-          return "";
-      }
+  // Generate User Rank Description
+  function rankDescription(round) {
+    switch (round) {
+      case 0:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            You're still getting accustomed to your senses, but we all see big
+            potential!
+          </p>
+        );
+        break;
+      case 1:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            Lot's of enthusiasm and spunk. That nose can only get sharper!
+          </p>
+        );
+        break;
+      case 2:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            Not Bad! Still lots of room to grow and sharpen those senses.
+          </p>
+        );
+        break;
+      case 3:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            You've come a long way. Starting to develop a very keen nose indeed!
+          </p>
+        );
+        break;
+      case 4:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            A reliable friend with sharp senses. Always there to lend a paw!
+          </p>
+        );
+        break;
+      case 5:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            Trustworthy and experienced. Able to sniff out trouble and save the
+            day!
+          </p>
+        );
+        break;
+      case 6:
+        return (
+          <p className="subtitle is-6 rank-desc">
+            'The Boss'. 'The Head Honcho'. You've got the sharpest nose of them
+            all!
+          </p>
+        );
+        break;
+      default:
+        return "";
     }
+  }
 
-      //Set fiftyFifty value
+  //Set fiftyFifty value
   function handleFifty() {
     const dogsLeft = dogsInRound.filter((dog) => {
       return dog.name !== correctDog.name;
@@ -251,7 +305,7 @@ function GameRoundContextProvider(props) {
             selected: true,
             correct: true,
             count: prevValue.count + 1,
-            dogNum: number
+            dogNum: number,
           };
         })
       : setSelected((prevValue) => {
@@ -259,7 +313,7 @@ function GameRoundContextProvider(props) {
             selected: true,
             correct: false,
             count: prevValue.count,
-            dogNum: number
+            dogNum: number,
           };
         });
   }
@@ -313,7 +367,7 @@ function GameRoundContextProvider(props) {
     checkAnswer,
     togglePopup,
     rendered,
-    setRendered
+    setRendered,
   };
 
   return (
