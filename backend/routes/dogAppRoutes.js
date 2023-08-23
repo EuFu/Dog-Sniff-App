@@ -10,7 +10,9 @@ router.route('/')
 .get((req, res) => {
     axios.get('https://api.thedogapi.com/v1/breeds', {'x-api-key': key}).then((data) => {
         res.json(data.data)
+        console.log("okay so far")
     }).catch((err) => {
+        console.log("here!")
         console.log(err)
     })
     // res.send("Got Login Homepage")

@@ -22,19 +22,24 @@ function Result() {
   
   const { toggleDogPack } = usePopUp();
 
+  const { resultSound, setResultSound} = useGameRound()
+
   useEffect(() => {
+    setResultSound(prev => prev + 1)
     playMusic("pause");
-    if (correct && round === 6) {
-      playSound(congrats);
-    } else if (correct) {
-      playSound(bark);
-    } else {
-      playSound(wahwah);
+    if (resultSound < 1) {
+      if (correct && round === 6) {
+        playSound(congrats);
+      } else if (correct) {
+        playSound(bark);
+      } else {
+        playSound(wahwah);
+      }
     }
     // setTimeout(() => {
-    //   playMusic("result")
-    // }, 1500)
-  }, []);
+    //   setResultSound(true)
+    // }, 800)
+  }, [round]);
 
   return (
     <>
@@ -50,9 +55,10 @@ function Result() {
                   correct ? "result-correct" : "result-incorrect"
                 }`}
               >
+                {resultSound <= 1 ? 
                 <h1
                   className={`title block is-1 is-size-3-mobile ${
-                    round < 6 && correct
+                    round < 6 && correct 
                       ? "animate__animated animate__heartBeat"
                       : round < 6 && correct === "false"
                       ? "animate__animated animate__fadeOut animate__delay-2s animate__slower"
@@ -66,7 +72,16 @@ function Result() {
                     : correct
                     ? "Good sniff!"
                     : "Lost the scent..."}
-                </h1>
+                </h1> :
+                <h1
+                  className="title block is-1 is-size-3-mobile"
+                >
+                  {correct && round === 6
+                    ? "Impeccable Senses"
+                    : correct
+                    ? "Good sniff!"
+                    : "Lost the scent..."}
+                </h1>}
                 {correct ? (
                   <h5 className="subtitle block is-6">You are correct!</h5>
                 ) : (
@@ -116,7 +131,7 @@ function Result() {
                   toggleDogPack();
                 }}
               >
-                <i class="fa-solid fa-dog fa-lg"></i>
+                <i className="fa-solid fa-dog fa-lg"></i>
               </button>
               {correct && round < 6 ? (
                 <button
@@ -132,9 +147,9 @@ function Result() {
                 >
                   <span className="">
                     <span>Next</span>
-                    <span class="icon is-small">
+                    <span className="icon is-small">
                       &nbsp;&nbsp;
-                      <i class=" fa-solid fa-right-long fa-2x"></i>&nbsp;
+                      <i className=" fa-solid fa-right-long fa-2x"></i>&nbsp;
                     </span>
                   </span>
                 </button>
@@ -149,8 +164,8 @@ function Result() {
                 >
                   <span>
                     <span>Start Over</span>
-                    <span class="icon is-small">
-                      <i class="fa-solid fa-arrow-rotate-left"></i>
+                    <span className="icon is-small">
+                      <i className="fa-solid fa-arrow-rotate-left"></i>
                     </span>
                   </span>
                 </button>

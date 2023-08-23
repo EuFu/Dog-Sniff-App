@@ -24,13 +24,13 @@ function Settings(props) {
         </div>
       ) : expanded ? (
         <div>
-          <div id="show-settings" class="modal is-active">
-            <div class="modal-background" onClick={toggleExpanded}></div>
-            <div class="modal-content">
+          <div id="show-settings" className="modal is-active">
+            <div className="modal-background" onClick={toggleExpanded}></div>
+            <div className="modal-content">
               <div className="box" id="settings-shell">
                 {music ? (
                   <i
-                    class="fa-solid fa-music fa-2x icon"
+                    className="fa-solid fa-music fa-2x icon"
                     onClick={() => {
                       toggleMusic();
                       muteMusic();
@@ -38,7 +38,7 @@ function Settings(props) {
                   ></i>
                 ) : (
                   <i
-                    class="fa-solid fa-music fa-2x icon muted"
+                    className="fa-solid fa-music fa-2x icon muted"
                     onClick={() => {
                       toggleMusic();
                       playMusic("menu");
@@ -47,21 +47,21 @@ function Settings(props) {
                 )}
                 {sound ? (
                   <i
-                    class="fa-solid fa-volume-high fa-2x icon"
+                    className="fa-solid fa-volume-high fa-2x icon"
                     onClick={() => {
                       toggleSound();
                     }}
                   ></i>
                 ) : (
                   <i
-                    class="fa-solid fa-volume-xmark fa-2x icon"
+                    className="fa-solid fa-volume-xmark fa-2x icon"
                     onClick={() => {
                       toggleSound();
                     }}
                   ></i>
                 )}
                 <i
-                  class="fa-solid fa-circle-info fa-2x icon"
+                  className="fa-solid fa-circle-info fa-2x icon"
                   onClick={() => {
                     toggleHelp();
                     console.log(sound);
@@ -70,7 +70,7 @@ function Settings(props) {
               </div>
             </div>
             <button
-              class="modal-close is-large"
+              className="modal-close is-large"
               aria-label="close"
               onClick={() => {
                 toggleExpanded();
@@ -82,7 +82,7 @@ function Settings(props) {
       ) : (
         <div>
           <i
-            class="fa-solid fa-gear"
+            className="fa-solid fa-gear"
             onClick={() => {
               toggleExpanded();
               playMusic("menu");

@@ -1,9 +1,11 @@
 import { usePopUp } from "../context/PopupContext";
 import { useSounds } from "../context/SoundsContext";
+import { useGameRound } from "../context/GameRoundContext";
 
 function Info(props) {
   const { toggleInfo } = usePopUp();
   const { playSound, click } = useSounds();
+  const { correctDogImage } = useGameRound
 
   return (
     <>
@@ -14,7 +16,7 @@ function Info(props) {
             <div className="card-image">
               <figure>
                 <img
-                  src={props.dog.image.url}
+                  src={props.dog.url}
                   alt={`${props.dog.name}`}
                   className="info-dog-img"
                 />
@@ -57,7 +59,7 @@ function Info(props) {
                     toggleInfo();
                   }}
                 >
-                  <i class="fa-solid fa-left-long"></i>&nbsp; Back
+                  <i className="fa-solid fa-left-long"></i>&nbsp; Back
                 </button>
               </div>
             </div>

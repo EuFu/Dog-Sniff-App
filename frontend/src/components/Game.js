@@ -12,7 +12,7 @@ function Game(props) {
     async function getDog() {
       await axios.get("/games").then((data) => {
         setAllDogs(data.data);
-        // console.log(data.data);
+        console.log(data.data);
       });
     }
     getDog();

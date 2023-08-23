@@ -30,7 +30,7 @@ function DogPack() {
                 toggleDogPack();
               }}
             >
-              <i class="fa-solid fa-left-long"></i>&nbsp; Back
+              <i className="fa-solid fa-left-long"></i>&nbsp; Back
             </button>
           </div>
         </div>

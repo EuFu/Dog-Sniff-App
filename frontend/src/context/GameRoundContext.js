@@ -1,5 +1,8 @@
-import { useState, createContext, useContext } from "react";
+import { useState, useEffect, createContext, useContext } from "react";
+import axios from 'axios'
+// import 'dotenv/config'
 
+const key = process.env.API_KEY
 const GameRoundContext = createContext();
 
 export const useGameRound = () => useContext(GameRoundContext);
@@ -9,6 +12,7 @@ function GameRoundContextProvider(props) {
   const [round, setRound] = useState(0);
   const [allDogs, setAllDogs] = useState([]);
   const [correctDog, setCorrectDog] = useState([]);
+  const [correctDogImage, setCorrectDogImage] = useState()
   const [dogsInRound, setDogsInRound] = useState([]);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [previousDogs, setPreviousDogs] = useState([]);
@@ -29,7 +33,19 @@ function GameRoundContextProvider(props) {
   });
   const [showCorrectName, setShowCorrectName] = useState(false);
   const [popup, setPopup] = useState(false);
+  const [resultSound, setResultSound] = useState(0)
   const [rendered, setRendered] = useState(round);
+
+  useEffect(() => {
+    axios.get(`https://api.thedogapi.com/v1/images/search?limit=1&breed_ids=${correctDog.id}`).then((data) => {
+      console.log(correctDog.name)
+      setCorrectDogImage(data.data[0].url)
+      correctDog.url = data.data[0].url
+    }).catch((err) => {
+      console.log("error in getting image")
+      console.log(correctDog)
+    })
+  }, [correctDog])
 
   // Generate New Round
   const generateRound = () => {
@@ -38,6 +54,7 @@ function GameRoundContextProvider(props) {
     setDogsInRound(dogs);
     const correctDog = pickCorrectDog(dogs);
     setCorrectDog(correctDog);
+    // retrieveDogImage(correctDog.id)
     setPreviousDogs((prevValue) => {
       return [...prevValue, correctDog];
     });
@@ -70,6 +87,7 @@ function GameRoundContextProvider(props) {
         letters: [],
       };
     });
+    setResultSound(0)
     generateRound();
   }
 
@@ -95,8 +113,18 @@ function GameRoundContextProvider(props) {
     });
     setShowCorrectName(false);
     setPopup(false);
+    setResultSound(0)
     setRound(0);
   }
+
+  // Retrieve correct dog url 
+  // const retrieveDogImage = (id) => {
+  //   axios.get("https://api.thedogapi.com/v1/images/search?limit=1", {"breed_ids": id}, {"api_key": key}).then((data) => {
+  //     console.log(data.data[0].url)
+  //     console.log(correctDog.name)
+  //     setCorrectDogImage(data.data[0].url)
+  //   })
+  // }
 
   // Pick 4 random dogs for round
   const pickDogs = () => {
@@ -170,7 +198,7 @@ function GameRoundContextProvider(props) {
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">
-              Pack Leader <i class="fa-solid fa-crown"></i>
+              Pack Leader <i className="fa-solid fa-crown"></i>
             </b>
           </div>
         );
@@ -368,6 +396,10 @@ function GameRoundContextProvider(props) {
     togglePopup,
     rendered,
     setRendered,
+    correctDogImage,
+    setCorrectDogImage,
+    resultSound,
+    setResultSound
   };
 
   return (

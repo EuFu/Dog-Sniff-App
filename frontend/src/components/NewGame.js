@@ -54,7 +54,7 @@ function NewGame(props) {
               onClick={delayRedirect}
               className="start-banner"
             >
-              <div className="start"> Start <i class="fa-solid fa-chevron-right"></i></div>
+              <div className="start"> Start <i className="fa-solid fa-chevron-right"></i></div>
             </Link>
           </div>
         </div>
