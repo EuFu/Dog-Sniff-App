@@ -38,12 +38,10 @@ function GameRoundContextProvider(props) {
 
   useEffect(() => {
     axios.get(`https://api.thedogapi.com/v1/images/search?limit=1&breed_ids=${correctDog.id}`).then((data) => {
-      console.log(correctDog.name)
       setCorrectDogImage(data.data[0].url)
       correctDog.url = data.data[0].url
     }).catch((err) => {
-      console.log("error in getting image")
-      console.log(correctDog)
+      console.log(`error getting dog image:" ${err}`)
     })
   }, [correctDog])
 
@@ -158,42 +156,36 @@ function GameRoundContextProvider(props) {
             <b className="title is-4 dog-rank rank-desc">Newborn</b>
           </div>
         );
-        break;
       case 1:
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">Rank: Pupper</b>
           </div>
         );
-        break;
       case 2:
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">Rank: Doggo</b>
           </div>
         );
-        break;
       case 3:
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">Rank: Good Dog</b>
           </div>
         );
-        break;
       case 4:
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">Rank: Sidekick</b>
           </div>
         );
-        break;
       case 5:
         return (
           <div>
             <b className="title is-4 dog-rank rank-desc">Rank: Rescue Dog</b>
           </div>
         );
-        break;
       case 6:
         return (
           <div>
@@ -202,7 +194,6 @@ function GameRoundContextProvider(props) {
             </b>
           </div>
         );
-        break;
       default:
         return "";
     }
@@ -218,35 +209,30 @@ function GameRoundContextProvider(props) {
             potential!
           </p>
         );
-        break;
       case 1:
         return (
           <p className="subtitle is-6 rank-desc">
             Lot's of enthusiasm and spunk. That nose can only get sharper!
           </p>
         );
-        break;
       case 2:
         return (
           <p className="subtitle is-6 rank-desc">
             Not Bad! Still lots of room to grow and sharpen those senses.
           </p>
         );
-        break;
       case 3:
         return (
           <p className="subtitle is-6 rank-desc">
             You've come a long way. Starting to develop a very keen nose indeed!
           </p>
         );
-        break;
       case 4:
         return (
           <p className="subtitle is-6 rank-desc">
             A reliable friend with sharp senses. Always there to lend a paw!
           </p>
         );
-        break;
       case 5:
         return (
           <p className="subtitle is-6 rank-desc">
@@ -254,7 +240,6 @@ function GameRoundContextProvider(props) {
             day!
           </p>
         );
-        break;
       case 6:
         return (
           <p className="subtitle is-6 rank-desc">
@@ -262,7 +247,6 @@ function GameRoundContextProvider(props) {
             all!
           </p>
         );
-        break;
       default:
         return "";
     }
@@ -275,8 +259,8 @@ function GameRoundContextProvider(props) {
     });
     setFiftyFifty(shuffleDogs(dogsLeft).slice(0, 2));
     setfFState(true);
-    console.log(fiftyFifty);
-    console.log(round);
+    // console.log(fiftyFifty);
+    // console.log(round);
   }
 
   //Select two random letters
@@ -285,7 +269,7 @@ function GameRoundContextProvider(props) {
       .toUpperCase()
       .replace(/[^A-Z0-9]+/gi, "")
       .split("");
-    console.log(array);
+    // console.log(array);
     let i = array.length;
     while (i) {
       const randomIndex = Math.floor(Math.random() * i--);
@@ -317,7 +301,7 @@ function GameRoundContextProvider(props) {
       dogsLeft[i] = dogsLeft[randomIndex];
       dogsLeft[randomIndex] = k;
     }
-    console.log(dogsLeft);
+    // console.log(dogsLeft);
     return dogsLeft;
   }
 

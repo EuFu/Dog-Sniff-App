@@ -64,7 +64,6 @@ function Settings(props) {
                   className="fa-solid fa-circle-info fa-2x icon"
                   onClick={() => {
                     toggleHelp();
-                    console.log(sound);
                   }}
                 ></i>
               </div>
